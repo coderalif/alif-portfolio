@@ -1,3 +1,15 @@
+/**
+ * ==============================================================================
+ * ⚡ TECHNICAL SKILLS COMPONENT (REQUIREMENT 6)
+ * ==============================================================================
+ * ফাইল লোকেশন: src/components/Skills.jsx
+ * কাজ:
+ *  ১. টেকনিক্যাল স্কিলসমূহকে ৪টি ক্যাটাগরিতে বিভক্ত করা (Frontend, Backend, Database, Tools)
+ *  ২. গ্রাফিক্যাল প্রগ্রেস বার এবং পারসেন্টেজ ডিসপ্লে করা (Requirement 6)
+ *  ৩. স্মুথ স্ক্রল অ্যানিমেশন
+ * ==============================================================================
+ */
+
 import { motion } from "framer-motion";
 import { skillGroups } from "../data/portfolio.js";
 import SectionHeader from "./SectionHeader.jsx";
@@ -13,6 +25,7 @@ export default function Skills() {
           align="center"
         />
 
+        {/* ৪টি ক্যাটাগরির গ্রিড */}
         <div className="grid gap-6 md:grid-cols-2">
           {skillGroups.map((group, groupIndex) => {
             const Icon = group.icon;
@@ -25,6 +38,7 @@ export default function Skills() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: groupIndex * 0.08 }}
               >
+                {/* ক্যাটাগরি হেডার */}
                 <div className="mb-6 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="grid h-12 w-12 place-items-center rounded-2xl bg-mint/10 text-mint light:bg-teal-50 light:text-teal-700">
@@ -42,7 +56,7 @@ export default function Skills() {
                   </span>
                 </div>
 
-                {/* Graphical Skill Progress Bars - Requirement 6 */}
+                {/* Requirement 6: গ্রাফিক্যাল অ্যানিমেটেড প্রগ্রেস বার */}
                 <div className="space-y-4">
                   {group.skills.map((skill, index) => (
                     <div key={skill.name} className="space-y-1.5">

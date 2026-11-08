@@ -1,3 +1,14 @@
+/**
+ * ==============================================================================
+ * 💼 EXPERIENCE TIMELINE COMPONENT (REQUIREMENT 8)
+ * ==============================================================================
+ * ফাইল লোকেশন: src/components/Experience.jsx
+ * কাজ:
+ *  ১. প্রফেশনাল কাজের অভিজ্ঞতা এবং প্রজেক্ট অভিজ্ঞতার টাইমলাইন প্রদর্শন
+ *  ২. সিগনেচার ভার্টিকাল লাইন ও গ্লোয়িং মার্কার
+ * ==============================================================================
+ */
+
 import { motion } from "framer-motion";
 import { FiBriefcase, FiCalendar, FiCheckCircle } from "react-icons/fi";
 import { experienceList } from "../data/portfolio.js";
@@ -13,6 +24,7 @@ export default function Experience() {
           text="Applying clean coding principles across independent client work, open source projects, and structured web engineering."
         />
 
+        {/* টাইমলাইন ভার্টিকাল ট্র‍্যাক */}
         <div className="relative border-l-2 border-mint/20 pl-6 sm:pl-8 ml-4 sm:ml-6 space-y-8 light:border-teal-200">
           {experienceList.map((item, index) => (
             <motion.div
@@ -23,11 +35,12 @@ export default function Experience() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.1 }}
             >
-              {/* Timeline marker */}
+              {/* টাইমলাইন পয়েন্টার মার্কার */}
               <div className="absolute -left-[41px] sm:-left-[49px] top-6 grid h-8 w-8 place-items-center rounded-full border border-mint bg-[#050816] text-mint shadow-glow light:border-teal-500 light:bg-white light:text-teal-700 light:shadow-md">
                 <FiBriefcase size={14} />
               </div>
 
+              {/* রোল, কোম্পানি ও কাজের সময়কাল */}
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <span className="inline-block rounded-full bg-mint/15 px-3 py-1 text-xs font-bold text-mint light:bg-teal-50 light:text-teal-700">
@@ -46,6 +59,7 @@ export default function Experience() {
                 </div>
               </div>
 
+              {/* প্রধান কাজের বুলেট পয়েন্টসমূহ */}
               <ul className="mt-5 space-y-2.5">
                 {item.points.map((point) => (
                   <li key={point} className="flex items-start gap-2.5 text-sm text-white/70 light:text-slate-600">

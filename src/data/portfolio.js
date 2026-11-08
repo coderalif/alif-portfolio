@@ -1,3 +1,12 @@
+/**
+ * ==============================================================================
+ * 🌟 PORTFOLIO DATA CONFIGURATION (MD ALIF HOSEN)
+ * ==============================================================================
+ * এই ফাইলে আপনার পোর্টফোলিওর সমস্ত তথ্য গুছিয়ে রাখা হয়েছে।
+ * আপনি যেকোনো সময় এখান থেকে নাম, ইমেইল, প্রজেক্ট, স্কিল পরিবর্তন বা যোগ করতে পারবেন।
+ * ==============================================================================
+ */
+
 import {
   FiActivity,
   FiBookOpen,
@@ -7,13 +16,15 @@ import {
   FiCompass,
   FiCpu,
   FiDatabase,
-  FiEye,
   FiGithub,
   FiLayers,
   FiServer,
   FiTool,
 } from "react-icons/fi";
 
+// ==========================================
+// ১. ডেভেলপার পরিচিতি ও সোশ্যাল লিংক
+// ==========================================
 export const developer = {
   name: "Md Alif Hosen",
   title: "Full Stack Developer",
@@ -27,9 +38,12 @@ export const developer = {
   github: "https://github.com/coderalif",
   linkedin: "https://www.linkedin.com/in/alif26/",
   facebook: "https://facebook.com/coderalif",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume.pdf", // public/resume.pdf ফাইল থেকে ডাউনলোড হবে
 };
 
+// ==========================================
+// ২. নেভিগেশন বার লিংক (Navbar Menu)
+// ==========================================
 export const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -40,12 +54,18 @@ export const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
+// ==========================================
+// ৩. হিরো সেকশনের কাউন্টার সংখ্যা (Hero Stats)
+// ==========================================
 export const stats = [
   { value: 18, suffix: "+", label: "Projects completed" },
   { value: 10, suffix: "+", label: "Core technologies" },
   { value: 2, suffix: "+", label: "Years experience" },
 ];
 
+// ==========================================
+// ৪. টেকনিক্যাল স্কিলস (Technical Skills)
+// ==========================================
 export const skillGroups = [
   {
     title: "Frontend Development",
@@ -93,6 +113,9 @@ export const skillGroups = [
   },
 ];
 
+// ==========================================
+// ৫. শখ ও আগ্রহ (Hobbies & Interests)
+// ==========================================
 export const hobbies = [
   {
     icon: FiActivity,
@@ -116,6 +139,9 @@ export const hobbies = [
   },
 ];
 
+// ==========================================
+// ৬. শিক্ষাগত যোগ্যতা (Educational Qualifications)
+// ==========================================
 export const educationList = [
   {
     degree: "Diploma in Electronics Technology",
@@ -135,6 +161,9 @@ export const educationList = [
   },
 ];
 
+// ==========================================
+// ৭. কাজের অভিজ্ঞতা (Work / Practical Experience)
+// ==========================================
 export const experienceList = [
   {
     role: "Full Stack Web Developer (Independent & Projects)",
@@ -160,6 +189,9 @@ export const experienceList = [
   },
 ];
 
+// ==========================================
+// ৮. সেরা প্রজেক্টসমূহ (Featured Projects)
+// ==========================================
 export const projects = [
   {
     id: "studiospace",
@@ -259,6 +291,9 @@ export const projects = [
   },
 ];
 
+// ==========================================
+// ৯. প্রোগ্রামিং জার্নি (Programming Journey)
+// ==========================================
 export const journey = [
   {
     icon: FiCode,

@@ -1,3 +1,21 @@
+/**
+ * ==============================================================================
+ * 🚀 PROJECTS SHOWCASE & DETAILS MODAL (REQUIREMENT 9)
+ * ==============================================================================
+ * ফাইল লোকেশন: src/components/Projects.jsx
+ * কাজ:
+ *  ১. সেরা প্রজেক্টসমূহ কার্ড ফরম্যাটে প্রদর্শন (নাম, ছবি, টাইপ, ডেসক্রিপশন, স্ট্যাক)
+ *  ২. "View Details" বাটন যা সম্পূর্ণ ডিটেইলস মোডাল ওপেন করে
+ *  ৩. মোডালে অন্তর্ভুক্ত রয়েছে:
+ *     - Main technology stack used
+ *     - Brief description & core features
+ *     - Live project link
+ *     - GitHub repository link (Client)
+ *     - Challenges faced while developing the project
+ *     - Potential improvements and future plans
+ * ==============================================================================
+ */
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -15,21 +33,18 @@ import { projects } from "../data/portfolio.js";
 import SectionHeader from "./SectionHeader.jsx";
 
 export default function Projects() {
+  // বর্তমানে কোন প্রজেক্টের ডিটেইলস মোডাল ওপেন আছে তা ট্র‍্যাক করা
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Prevent background scrolling when details modal is open
+  // মোডাল ওপেন থাকলে ব্যাকগ্রাউন্ড স্ক্রলিং লক করা
   useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = selectedProject ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [selectedProject]);
 
-  // Handle escape key
+  // কীবোর্ডের Escape প্রেস করলে মোডাল বন্ধ হওয়া
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -46,10 +61,12 @@ export default function Projects() {
         <SectionHeader
           eyebrow="Featured Projects"
           title="Production-ready web applications built with modern engineering."
-          text="Click 'View More / Details' on any project to explore the tech stack, development challenges, and future roadmap."
+          text="Click 'View Details' on any project to explore the tech stack, development challenges, and future roadmap."
         />
 
-        {/* Project Cards Grid - Requirement 9 */}
+        {/* ========================================================= */}
+        {/* প্রজেক্ট কার্ড গ্রিড (Requirement 9) */}
+        {/* ========================================================= */}
         <div className="grid gap-7 md:grid-cols-2">
           {projects.map((project, index) => (
             <motion.article
@@ -60,7 +77,7 @@ export default function Projects() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.08 }}
             >
-              {/* Project Image */}
+              {/* প্রজেক্ট থাম্বনেইল ছবি */}
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
@@ -73,14 +90,14 @@ export default function Projects() {
                 </span>
               </div>
 
-              {/* Project Info */}
+              {/* প্রজেক্ট বিবরণ ও টেক স্ট্যাক */}
               <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-2xl font-black text-white light:text-slate-900">{project.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-6 text-white/65 light:text-slate-600">
                   {project.shortDescription}
                 </p>
 
-                {/* Tech Stack Badges */}
+                {/* টেক স্ট্যাক ব্যাজসমূহ */}
                 <div className="mt-5 flex flex-wrap gap-1.5">
                   {project.stack.slice(0, 4).map((tech) => (
                     <span
@@ -97,7 +114,7 @@ export default function Projects() {
                   )}
                 </div>
 
-                {/* Buttons: Requirement 9 asks for 'View More / Details' button */}
+                {/* অ্যাকশন বাটনসমূহ: 'View Details', Live Demo, GitHub */}
                 <div className="mt-6 flex items-center gap-2 pt-4 border-t border-white/10 light:border-slate-100">
                   <button
                     type="button"
@@ -132,11 +149,13 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Detailed Project Modal Dialog - Requirement 9 */}
+        {/* ========================================================= */}
+        {/* রিকোয়ারমেন্ট ৯ অনুযায়ী প্রজেক্ট ডিটেইলস মোডাল (Details Modal) */}
+        {/* ========================================================= */}
         <AnimatePresence>
           {selectedProject && (
             <div className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-              {/* Backdrop */}
+              {/* ব্যাকড্রপ ব্লার */}
               <motion.div
                 className="fixed inset-0 bg-[#050816]/85 backdrop-blur-md"
                 initial={{ opacity: 0 }}
@@ -145,7 +164,7 @@ export default function Projects() {
                 onClick={() => setSelectedProject(null)}
               />
 
-              {/* Modal Container */}
+              {/* মোডাল কন্টেইনার */}
               <motion.div
                 className="relative my-6 max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-[#0b1324] p-5 sm:p-8 shadow-2xl backdrop-blur-2xl light:border-slate-200 light:bg-white"
                 initial={{ opacity: 0, scale: 0.92, y: 20 }}
@@ -153,7 +172,7 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.92, y: 20 }}
                 transition={{ duration: 0.25 }}
               >
-                {/* Close Button */}
+                {/* ক্লোজ বাটন */}
                 <button
                   type="button"
                   onClick={() => setSelectedProject(null)}
@@ -163,7 +182,7 @@ export default function Projects() {
                   <FiX size={20} />
                 </button>
 
-                {/* Modal Header */}
+                {/* মোডাল হেডার */}
                 <div className="pr-12">
                   <span className="inline-block rounded-full bg-mint/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-mint light:bg-teal-50 light:text-teal-700 light:border light:border-teal-200">
                     {selectedProject.type}
@@ -173,7 +192,7 @@ export default function Projects() {
                   </h3>
                 </div>
 
-                {/* Modal Preview Image */}
+                {/* প্রজেক্ট ছবি */}
                 <div className="mt-5 overflow-hidden rounded-2xl border border-white/10 light:border-slate-200">
                   <img
                     src={selectedProject.image}
@@ -182,7 +201,7 @@ export default function Projects() {
                   />
                 </div>
 
-                {/* 1. Main Technology Stack Used - Requirement 9 */}
+                {/* ১. Main Technology Stack Used (Requirement 9) */}
                 <div className="mt-6">
                   <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint light:text-teal-700">
                     <FiLayers /> Main Technology Stack Used
@@ -199,7 +218,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* 2. Brief Description & Core Features - Requirement 9 */}
+                {/* ২. Brief Description & Core Features (Requirement 9) */}
                 <div className="mt-6">
                   <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/50 light:text-slate-500">
                     <FiInfo /> Brief Description
@@ -217,7 +236,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* 3. Challenges Faced - Requirement 9 */}
+                {/* ৩. Challenges Faced While Developing (Requirement 9) */}
                 <div className="mt-6 rounded-2xl border border-amber/30 bg-amber/5 p-4 light:border-amber-200 light:bg-amber-50/90">
                   <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber light:text-amber-800">
                     <FiAlertCircle /> Challenges Faced While Developing
@@ -227,7 +246,7 @@ export default function Projects() {
                   </p>
                 </div>
 
-                {/* 4. Potential Improvements and Future Plans - Requirement 9 */}
+                {/* ৪. Potential Improvements and Future Plans (Requirement 9) */}
                 <div className="mt-5 rounded-2xl border border-mint/30 bg-mint/5 p-4 light:border-teal-200 light:bg-teal-50/90">
                   <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint light:text-teal-800">
                     <FiCompass /> Potential Improvements & Future Plans
@@ -237,7 +256,7 @@ export default function Projects() {
                   </p>
                 </div>
 
-                {/* 5. Live Project & Client GitHub Repository Links - Requirement 9 */}
+                {/* ৫. Live Project & Client GitHub Repository Links (Requirement 9) */}
                 <div className="mt-7 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-4 border-t border-white/10 light:border-slate-200">
                   <a
                     href={selectedProject.live}

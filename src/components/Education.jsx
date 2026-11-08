@@ -1,3 +1,15 @@
+/**
+ * ==============================================================================
+ * 🎓 EDUCATIONAL QUALIFICATIONS COMPONENT (REQUIREMENT 7)
+ * ==============================================================================
+ * ফাইল লোকেশন: src/components/Education.jsx
+ * কাজ:
+ *  ১. কুড়িগ্রাম পলিটেকনিক ইনস্টিটিউট থেকে ডিপ্লোমা ইন ইলেকট্রনিক্স টেকনোলজি (রানিং)
+ *  ২. এসএসসি (বিজ্ঞান বিভাগ)
+ *  ৩. কার্ড আকারে অ্যাকাডেমিক ব্যাকগ্রাউন্ড উপস্থাপন
+ * ==============================================================================
+ */
+
 import { motion } from "framer-motion";
 import { FiAward, FiBookOpen, FiCalendar, FiMapPin } from "react-icons/fi";
 import { educationList } from "../data/portfolio.js";
@@ -24,6 +36,7 @@ export default function Education() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.1 }}
             >
+              {/* আইকন ও ক্যালেন্ডার সময়কাল */}
               <div className="flex items-start justify-between gap-4">
                 <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-mint/20 to-amber/20 text-mint light:from-teal-50 light:to-amber-50 light:text-teal-700 light:border light:border-teal-200/50">
                   <FiAward size={26} />
@@ -33,6 +46,7 @@ export default function Education() {
                 </span>
               </div>
 
+              {/* ডিগ্রি ও শিক্ষা প্রতিষ্ঠান বিবরণ */}
               <div className="mt-5">
                 <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-mint light:text-teal-700">
                   <FiBookOpen /> {item.status}

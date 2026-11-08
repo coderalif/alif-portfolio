@@ -1,3 +1,16 @@
+/**
+ * ==============================================================================
+ * 🌟 MAIN APPLICATION COMPONENT (MD ALIF HOSEN PORTFOLIO)
+ * ==============================================================================
+ * ফাইল লোকেশন: src/App.jsx
+ * কাজ:
+ *  ১. গ্লোবাল লেআউট ও ব্যাকড্রপ লাইটিং
+ *  ২. থিম স্টেট ম্যানেজমেন্ট (ডার্ক/লাইট এবং localStorage পারসিস্টেন্স)
+ *  ৩. পেজ স্ক্রল প্রগ্রেস বার ও ব্যাক-টু-টপ বাটন
+ *  ৪. ফুটার ও সোশ্যাল অ্যাক্সেস
+ * ==============================================================================
+ */
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -7,7 +20,6 @@ import {
   FiMail,
   FiMapPin,
   FiMoon,
-  FiPhone,
   FiSun,
 } from "react-icons/fi";
 import { FaFacebook, FaWhatsapp } from "react-icons/fa6";
@@ -21,19 +33,21 @@ import Projects from "./components/Projects.jsx";
 import Skills from "./components/Skills.jsx";
 import { developer } from "./data/portfolio.js";
 
+// ফুটারের জন্য সোশ্যাল লিংক কনফিগারেশন
 const socialLinks = [
   { href: developer.github, label: "GitHub", icon: FiGithub },
   { href: developer.linkedin, label: "LinkedIn", icon: FiLinkedin },
   { href: developer.whatsappLink, label: "WhatsApp", icon: FaWhatsapp },
   { href: developer.facebook, label: "Facebook", icon: FaFacebook },
   { href: `mailto:${developer.email}`, label: "Email", icon: FiMail },
-  { href: `tel:${developer.phone.replace(/\s/g, "")}`, label: "Phone", icon: FiPhone },
 ];
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
+
+  // থিম স্টেট (ইউজার আগেরবার লাইট নাকি ডার্ক রেখেছিল তা ব্রাউজারের localStorage থেকে পড়া)
   const [isLight, setIsLight] = useState(() => {
     try {
       const saved = localStorage.getItem("theme");
@@ -44,11 +58,13 @@ export default function App() {
     return false;
   });
 
+  // পেজ লোডিং স্ক্রিন টাইমার
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 850);
     return () => window.clearTimeout(timer);
   }, []);
 
+  // থিম পরিবর্তন হলে html ট্যাগে "light" ক্লাস টগল এবং মেমোরিতে সেভ
   useEffect(() => {
     document.documentElement.classList.toggle("light", isLight);
     try {
@@ -58,6 +74,7 @@ export default function App() {
     }
   }, [isLight]);
 
+  // স্ক্রল প্রগ্রেস বার ও ব্যাক-টু-টপ বাটন ভিজিবিলিটি ক্যালকুলেশন
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
@@ -73,14 +90,21 @@ export default function App() {
 
   return (
     <>
+      {/* ১. ইনিশিয়াল ইন্ট্রো লোডিং স্ক্রিন */}
       <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
+
+      {/* ২. টপ স্ক্রল প্রগ্রেস ইন্ডিকেটর */}
       <div
         className="fixed left-0 top-0 z-[80] h-1 bg-gradient-to-r from-mint via-amber to-rose"
         style={{ width: `${progress}%` }}
       />
+
+      {/* ৩. মূল কন্টেইনার */}
       <div className="min-h-screen overflow-x-hidden bg-[#050816] text-white transition-colors duration-500 light:bg-[#f8fafc] light:text-slate-900">
         <SiteBackdrop />
         <Navbar isLight={isLight} onToggleTheme={() => setIsLight((value) => !value)} />
+        
+        {/* প্রধান সেকশনসমূহ */}
         <main>
           <Hero />
           <About />
@@ -90,7 +114,11 @@ export default function App() {
           <Education />
           <Contact />
         </main>
+
+        {/* ফুটার */}
         <Footer isLight={isLight} onToggleTheme={() => setIsLight((value) => !value)} />
+
+        {/* ৪. ব্যাক টু টপ বাটন */}
         <AnimatePresence>
           {showTop && (
             <motion.button
@@ -111,6 +139,7 @@ export default function App() {
   );
 }
 
+// লোডিং অ্যানিমেশন স্ক্রিন
 function LoadingScreen() {
   return (
     <motion.div
@@ -134,6 +163,7 @@ function LoadingScreen() {
   );
 }
 
+// ব্যাকগ্রাউন্ড গ্রিড ও অ্যাম্বিয়েন্ট গ্লো
 function SiteBackdrop() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
@@ -146,6 +176,7 @@ function SiteBackdrop() {
   );
 }
 
+// এলিগেন্ট ফুটার কম্পোনেন্ট (Requirement 11)
 function Footer({ isLight, onToggleTheme }) {
   return (
     <footer className="relative z-10 border-t border-white/10 px-5 py-10 light:border-slate-200 sm:px-8 lg:px-12">

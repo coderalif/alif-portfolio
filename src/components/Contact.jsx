@@ -1,3 +1,16 @@
+/**
+ * ==============================================================================
+ * 📬 CONTACT & INTERACTIVE MESSAGE ENGINE (REQUIREMENT 10)
+ * ==============================================================================
+ * ফাইল লোকেশন: src/components/Contact.jsx
+ * কাজ:
+ *  ১. সরাসরি যোগাযোগের মাধ্যম (ইমেইল, ফোন, হোয়াটসঅ্যাপ, গিটহাব, লিঙ্কডইন)
+ *  ২. ফুলস্ট্যাক কন্টাক্ট ফর্ম যা Vercel Serverless API (/api/contact)-এর মাধ্যমে
+ *     সরাসরি আপনার জিমেইলে ইমেইল পাঠায় এবং MongoDB Atlas-এ মেসেজ জমা রাখে
+ *  ৩. সেন্ডিং স্টেট ও সাকসেস নোটিফিকেশন অ্যালার্ট
+ * ==============================================================================
+ */
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -7,14 +20,14 @@ import {
   FiLinkedin,
   FiMail,
   FiMapPin,
-  FiMessageSquare,
   FiPhone,
   FiSend,
 } from "react-icons/fi";
-import { FaFacebook, FaWhatsapp } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa6";
 import { developer } from "../data/portfolio.js";
 import SectionHeader from "./SectionHeader.jsx";
 
+// কন্টাক্ট চ্যানেলসমূহের তালিকা
 const contactChannels = [
   {
     icon: FiMail,
@@ -59,6 +72,7 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
 
+  // ফর্ম সাবমিট হ্যান্ডলার (Vercel Serverless Function /api/contact কল করে)
   const onSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -92,7 +106,7 @@ export default function Contact() {
         throw new Error(data.message || "Server delivery failed.");
       }
     } catch (err) {
-      // Graceful fallback to mailto so the user never loses their message!
+      // নেটওয়ার্ক ফেইলিউর হলে অটোমেটিক মেইল অ্যাপ দিয়ে ওপেন হওয়ার ফলব্যাক
       const subject = encodeURIComponent(payload.subject || `Inquiry from ${payload.name}`);
       const body = encodeURIComponent(
         `Hello Alif,\n\n${payload.message}\n\nSender: ${payload.name}\nEmail: ${payload.email}`
@@ -117,14 +131,16 @@ export default function Contact() {
         />
 
         <div className="grid gap-8 lg:grid-cols-[.95fr_1.05fr]">
-          {/* Contact Direct Cards - Requirement 10 */}
+          {/* ========================================================= */}
+          {/* বাম দিকের কলাম: সরাসরি যোগাযোগের চ্যানেল কার্ডসমূহ (Req 10) */}
+          {/* ========================================================= */}
           <motion.div
             className="flex flex-col gap-4"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
           >
-            {/* Location & Availability Note */}
+            {/* লোকেশন ও ফুলস্ট্যাক অ্যাভেইল্যাবিলিটি নোট */}
             <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 light:border-slate-200/90 light:bg-white light:shadow-sm">
               <FiMapPin className="mt-1 shrink-0 text-mint light:text-teal-600" size={18} />
               <div>
@@ -137,7 +153,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Direct Cards List */}
+            {/* চ্যানেল কার্ডসমূহের তালিকা */}
             <div className="grid gap-3 sm:grid-cols-1">
               {contactChannels.map((item) => {
                 const Icon = item.icon;
@@ -177,7 +193,9 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Interactive Contact Form (Backend Serverless API Powered) */}
+          {/* ========================================================= */}
+          {/* ডানদিকের কলাম: ইন্টারঅ্যাকটিভ কন্টাক্ট ফর্ম (Backend API)  */}
+          {/* ========================================================= */}
           <motion.div
             className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-5 sm:p-8 shadow-premium backdrop-blur-xl light:border-slate-200/90 light:bg-white light:shadow-lg"
             initial={{ opacity: 0, y: 28 }}
@@ -237,6 +255,7 @@ export default function Contact() {
                 )}
               </button>
 
+              {/* সাবমিশন স্টেটাস মেসেজ */}
               {status && (
                 <div
                   className={`mt-4 rounded-2xl border p-4 text-xs leading-6 ${
@@ -268,6 +287,7 @@ export default function Contact() {
   );
 }
 
+// ইনপুট ফিল্ড সাব-কম্পোনেন্ট
 function Field({ label, name, type = "text", placeholder, required = false }) {
   return (
     <div>

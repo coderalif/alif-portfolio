@@ -1,5 +1,18 @@
+/**
+ * ==============================================================================
+ * 🚀 VERCEL SERVERLESS FUNCTION: CONTACT API
+ * ==============================================================================
+ * ফাইল লোকেশন: api/contact.js
+ * কাজ:
+ *  ১. পোর্টফোলিও কন্টাক্ট ফর্ম থেকে পাঠানো মেসেজ রিসিভ করা (POST request)
+ *  ২. ফর্মের ডাটা ভ্যালিডেশন করা
+ *  ৩. (ঐচ্ছিক) MongoDB Atlas ডাটাবেসে মেসেজের কপি সংরক্ষণ করা
+ *  ৪. Nodemailer (Gmail SMTP)-এর মাধ্যমে আপনার জিমেইলে ডিরেক্ট ইমেইল পাঠানো
+ * ==============================================================================
+ */
+
 export default async function handler(req, res) {
-  // Set CORS headers
+  // ১. CORS হেডার সেট করা যাতে যেকোনো ব্রাউজার থেকে রিকোয়েস্ট আসে ব্লক না হয়
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,POST");
@@ -8,17 +21,24 @@ export default async function handler(req, res) {
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
 
+  // ব্রাউজারের প্রি-ফ্লাইট OPTIONS রিকোয়েস্ট হ্যান্ডেল করা
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
+  // শুধুমাত্র POST রিকোয়েস্ট গ্রহণযোগ্য
   if (req.method !== "POST") {
-    return res.status(405).json({ success: false, message: "Method not allowed. Use POST." });
+    return res.status(405).json({
+      success: false,
+      message: "Method not allowed. Please use POST.",
+    });
   }
 
   try {
+    // ২. রিকোয়েস্ট বডি থেকে ফর্মের ডাটা সংগ্রহ করা
     const { name, email, subject, message } = req.body || {};
 
+    // প্রয়োজনীয় ফিল্ডগুলো চেক করা
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
@@ -29,7 +49,7 @@ export default async function handler(req, res) {
     const recipientEmail = process.env.RECIPIENT_EMAIL || "mdalifhosen876@gmail.com";
     const cleanSubject = subject?.trim() || `New Portfolio Message from ${name}`;
 
-    // 1. Optional MongoDB Atlas Message Storage
+    // ৩. (ঐচ্ছিক) MongoDB Atlas ডাটাবেসে মেসেজ স্টোর করা
     let dbSaved = false;
     if (process.env.MONGODB_URI) {
       try {
@@ -48,11 +68,11 @@ export default async function handler(req, res) {
         await client.close();
         dbSaved = true;
       } catch (dbErr) {
-        console.error("MongoDB storage warning:", dbErr.message);
+        console.error("MongoDB storage note:", dbErr.message);
       }
     }
 
-    // 2. Email Delivery via Nodemailer (Gmail SMTP)
+    // ৪. Nodemailer (Gmail SMTP)-এর মাধ্যমে সরাসরি আপনার ইনবক্সে ইমেইল পাঠানো
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
       const nodemailer = await import("nodemailer");
       const transporter = nodemailer.createTransport({
@@ -103,10 +123,10 @@ export default async function handler(req, res) {
       });
     }
 
-    // 3. Fallback when env variables are yet to be configured
+    // ইমেইল ক্রেডেনশিয়াল না থাকলেও গ্রেসফুল রেসপন্স
     return res.status(200).json({
       success: true,
-      message: "Message received! (Direct Gmail SMTP is ready. Add EMAIL_USER & EMAIL_PASS in Vercel settings to activate live inbox delivery)",
+      message: "Message received! (Direct Gmail SMTP is ready. Add EMAIL_USER & EMAIL_PASS in Vercel to activate)",
       dbSaved,
     });
   } catch (error) {
