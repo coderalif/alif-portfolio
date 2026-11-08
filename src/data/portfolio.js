@@ -14,7 +14,7 @@ export const developer = {
   location: "Rangpur, Bangladesh",
   email: "mdalifhosen876@gmail.com",
   phone: "+8801743282144",
-  portfolio: "https://magnificent-clafoutis-ac9788.netlify.app/",
+  portfolio: "https://coderalif.netlify.app/",
   github: "https://github.com/coderalif",
   linkedin: "https://www.linkedin.com/in/coderalif/",
 };
