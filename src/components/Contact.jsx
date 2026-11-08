@@ -7,8 +7,8 @@ import SectionHeader from "./SectionHeader.jsx";
 const contactLinks = [
   { icon: FiMail, label: "Email", value: developer.email, href: `mailto:${developer.email}` },
   { icon: FiPhone, label: "Phone", value: developer.phone, href: `tel:${developer.phone}` },
-  { icon: FiGithub, label: "GitHub", value: "mdsamimprogramer", href: developer.github },
-  { icon: FiLinkedin, label: "LinkedIn", value: "samim01", href: developer.linkedin },
+  { icon: FiGithub, label: "GitHub", value: "coderalif", href: developer.github },
+  { icon: FiLinkedin, label: "LinkedIn", value: "coderalif", href: developer.linkedin },
 ];
 
 export default function Contact() {
