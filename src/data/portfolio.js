@@ -13,10 +13,10 @@ export const developer = {
   title: "Full Stack Developer",
   location: "Rangpur, Bangladesh",
   email: "mdalifhosen876@gmail.com",
-  phone: "+8801743282144",
+  phone: "+8801795713804",
   portfolio: "https://coderalif.netlify.app/",
   github: "https://github.com/coderalif",
-  linkedin: "https://www.linkedin.com/in/coderalif/",
+  linkedin: "https://www.linkedin.com/in/alif26/",
 };
 
 export const navItems = [

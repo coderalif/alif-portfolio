@@ -8,7 +8,7 @@ const contactLinks = [
   { icon: FiMail, label: "Email", value: developer.email, href: `mailto:${developer.email}` },
   { icon: FiPhone, label: "Phone", value: developer.phone, href: `tel:${developer.phone}` },
   { icon: FiGithub, label: "GitHub", value: "coderalif", href: developer.github },
-  { icon: FiLinkedin, label: "LinkedIn", value: "coderalif", href: developer.linkedin },
+  { icon: FiLinkedin, label: "LinkedIn", value: "alif26", href: developer.linkedin },
 ];
 
 export default function Contact() {
