@@ -62,8 +62,8 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative z-10 flex min-h-screen items-center px-5 pb-20 pt-32 sm:px-8 lg:px-12">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
+    <section id="home" className="relative z-10 flex min-h-screen items-center px-4 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:px-12">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 sm:gap-12 lg:grid-cols-[1.1fr_.9fr]">
         <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-mint backdrop-blur-xl">
             <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_18px_rgba(45,212,191,.9)]" />

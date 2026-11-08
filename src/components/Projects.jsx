@@ -41,7 +41,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="relative z-10 px-5 py-24 sm:px-8 lg:px-12">
+    <section id="projects" className="relative z-10 px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Featured Projects"

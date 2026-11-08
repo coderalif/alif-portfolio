@@ -72,7 +72,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative z-10 px-5 py-24 sm:px-8 lg:px-12">
+    <section id="contact" className="relative z-10 px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Get In Touch"
@@ -143,7 +143,7 @@ export default function Contact() {
 
           {/* Interactive Contact Form */}
           <motion.div
-            className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-6 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white sm:p-8"
+            className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-5 sm:p-8 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}

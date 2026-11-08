@@ -72,20 +72,31 @@ export default function Navbar({ isLight, onToggleTheme }) {
 
       {open && (
         <motion.div
-          className="mx-auto mt-3 max-w-7xl rounded-2xl border border-white/10 bg-[#07101f]/95 p-3 shadow-premium backdrop-blur-2xl light:border-slate-200 light:bg-white"
+          className="mx-auto mt-2 max-w-7xl rounded-2xl border border-white/10 bg-[#07101f]/95 p-3 shadow-premium backdrop-blur-2xl light:border-slate-200 light:bg-white"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {navItems.map((item) => (
+          <div className="space-y-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white light:text-slate-700 light:hover:bg-slate-100"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <div className="mt-2 border-t border-white/10 pt-2 light:border-slate-100">
             <a
-              key={item.href}
-              href={item.href}
+              href="#contact"
               onClick={() => setOpen(false)}
-              className="block rounded-xl px-4 py-3 text-sm font-semibold text-white/70 hover:bg-white/10 hover:text-white light:text-slate-700 light:hover:bg-slate-100"
+              className="block w-full rounded-xl bg-mint py-2.5 text-center text-sm font-extrabold text-[#050816] transition hover:bg-white"
             >
-              {item.label}
+              Hire Me
             </a>
-          ))}
+          </div>
         </motion.div>
       )}
     </header>

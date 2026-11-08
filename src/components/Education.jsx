@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader.jsx";
 
 export default function Education() {
   return (
-    <section id="education" className="relative z-10 border-y border-white/10 bg-white/[0.02] px-5 py-24 light:border-slate-200 light:bg-slate-50/80 sm:px-8 lg:px-12">
+    <section id="education" className="relative z-10 border-y border-white/10 bg-white/[0.02] px-4 py-16 sm:px-8 sm:py-24 lg:px-12 light:border-slate-200 light:bg-slate-50/80">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Educational Qualification"
@@ -18,7 +18,7 @@ export default function Education() {
           {educationList.map((item, index) => (
             <motion.div
               key={item.degree}
-              className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-7 shadow-premium backdrop-blur-xl transition hover:border-mint/30 light:border-slate-200 light:bg-white sm:p-8"
+              className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-5 shadow-premium backdrop-blur-xl transition hover:border-mint/30 light:border-slate-200 light:bg-white sm:p-8"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

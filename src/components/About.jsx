@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader.jsx";
 
 export default function About() {
   return (
-    <section id="about" className="relative z-10 px-5 py-24 sm:px-8 lg:px-12">
+    <section id="about" className="relative z-10 px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="About Me"
@@ -129,9 +129,9 @@ export default function About() {
 
 function Info({ label, value }) {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2.5 light:border-slate-200 light:bg-slate-50">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-2.5 light:border-slate-200 light:bg-slate-50">
       <span className="text-xs text-white/50 light:text-slate-500">{label}</span>
-      <strong className="text-right text-xs font-semibold text-white light:text-slate-950 truncate max-w-[240px]">
+      <strong className="text-left sm:text-right text-xs font-semibold text-white light:text-slate-950 truncate max-w-full sm:max-w-[260px]">
         {value}
       </strong>
     </div>

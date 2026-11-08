@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader.jsx";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative z-10 px-5 py-24 sm:px-8 lg:px-12">
+    <section id="experience" className="relative z-10 px-4 py-16 sm:px-8 sm:py-24 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Experience"

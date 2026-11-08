@@ -4,7 +4,7 @@ import SectionHeader from "./SectionHeader.jsx";
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative z-10 border-y border-white/10 bg-white/[0.02] px-5 py-24 light:border-slate-200 light:bg-slate-50/80 sm:px-8 lg:px-12">
+    <section id="skills" className="relative z-10 border-y border-white/10 bg-white/[0.02] px-4 py-16 sm:px-8 sm:py-24 lg:px-12 light:border-slate-200 light:bg-slate-50/80">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Technical Skills"
