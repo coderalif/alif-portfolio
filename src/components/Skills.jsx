@@ -4,43 +4,62 @@ import SectionHeader from "./SectionHeader.jsx";
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative z-10 border-y border-white/10 bg-white/[0.025] px-5 py-24 light:border-slate-200 light:bg-slate-50/80 sm:px-8 lg:px-12">
+    <section id="skills" className="relative z-10 border-y border-white/10 bg-white/[0.02] px-5 py-24 light:border-slate-200 light:bg-slate-50/80 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          eyebrow="Skills"
-          title="A focused stack for modern full stack development."
-          text="I work with the technologies needed to design, build, connect, and deploy complete web applications."
+          eyebrow="Technical Skills"
+          title="A focused, visual breakdown of my technical proficiencies."
+          text="Categorized across frontend engineering, backend architectures, database schemas, and modern development tooling."
           align="center"
         />
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {skillGroups.map((group, index) => {
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {skillGroups.map((group, groupIndex) => {
             const Icon = group.icon;
             return (
               <motion.article
                 key={group.title}
-                className="rounded-3xl border border-white/10 bg-[#07101f]/70 p-6 shadow-premium backdrop-blur-xl transition hover:-translate-y-2 hover:border-mint/40 light:border-slate-200 light:bg-white"
+                className="rounded-3xl border border-white/10 bg-[#07101f]/70 p-6 shadow-premium backdrop-blur-xl transition hover:border-mint/30 light:border-slate-200 light:bg-white sm:p-7"
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: index * 0.07 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: groupIndex * 0.08 }}
               >
                 <div className="mb-6 flex items-center justify-between">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-mint light:bg-mint/10">
-                    <Icon size={22} />
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-mint/10 text-mint">
+                      <Icon size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black text-white light:text-slate-950">{group.title}</h3>
+                      <p className="text-xs text-white/50 light:text-slate-500">
+                        {group.skills.length} core competencies
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-[0.24em] text-white/35 light:text-slate-400">
-                    {String(index + 1).padStart(2, "0")}
+                  <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold text-mint light:border-slate-200 light:bg-slate-100">
+                    Category {String(groupIndex + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="text-xl font-black text-white light:text-slate-950">{group.title}</h3>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-2 text-sm font-semibold text-white/68 light:border-slate-200 light:bg-slate-50 light:text-slate-700"
-                    >
-                      {skill}
-                    </span>
+
+                {/* Graphical Skill Progress Bars - Requirement 6 */}
+                <div className="space-y-4">
+                  {group.skills.map((skill, index) => (
+                    <div key={skill.name} className="space-y-1.5">
+                      <div className="flex justify-between text-xs font-bold">
+                        <span className="text-white/85 light:text-slate-800">{skill.name}</span>
+                        <span className="text-mint">{skill.level}%</span>
+                      </div>
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-white/10 light:bg-slate-200">
+                        <motion.div
+                          className="h-full rounded-full bg-gradient-to-r from-mint via-cyan-400 to-amber"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.9, delay: index * 0.05 }}
+                        />
+                      </div>
+                    </div>
                   ))}
                 </div>
               </motion.article>

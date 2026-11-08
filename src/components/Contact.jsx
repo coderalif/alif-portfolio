@@ -1,14 +1,57 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiPhone, FiSend } from "react-icons/fi";
+import {
+  FiCheckCircle,
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiMapPin,
+  FiMessageSquare,
+  FiPhone,
+  FiSend,
+} from "react-icons/fi";
+import { FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { developer } from "../data/portfolio.js";
 import SectionHeader from "./SectionHeader.jsx";
 
-const contactLinks = [
-  { icon: FiMail, label: "Email", value: developer.email, href: `mailto:${developer.email}` },
-  { icon: FiPhone, label: "Phone", value: developer.phone, href: `tel:${developer.phone}` },
-  { icon: FiGithub, label: "GitHub", value: "coderalif", href: developer.github },
-  { icon: FiLinkedin, label: "LinkedIn", value: "alif26", href: developer.linkedin },
+const contactChannels = [
+  {
+    icon: FiMail,
+    label: "Email Address",
+    value: developer.email,
+    href: `mailto:${developer.email}`,
+    action: "Send Email",
+  },
+  {
+    icon: FiPhone,
+    label: "Phone Number",
+    value: developer.phone,
+    href: `tel:${developer.phone}`,
+    action: "Call Direct",
+  },
+  {
+    icon: FaWhatsapp,
+    label: "WhatsApp Number",
+    value: developer.whatsapp,
+    href: developer.whatsappLink,
+    action: "Chat on WhatsApp",
+    badge: "Fastest Reply",
+    color: "text-[#25D366]",
+  },
+  {
+    icon: FiGithub,
+    label: "GitHub Profile",
+    value: "coderalif",
+    href: developer.github,
+    action: "Follow & Star",
+  },
+  {
+    icon: FiLinkedin,
+    label: "LinkedIn Profile",
+    value: "alif26",
+    href: developer.linkedin,
+    action: "Connect",
+  },
 ];
 
 export default function Contact() {
@@ -18,11 +61,13 @@ export default function Contact() {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
-    const subjectText = data.get("subject") || `Portfolio inquiry from ${data.get("name")}`;
+    const subjectText = data.get("subject") || `Portfolio Inquiry from ${data.get("name")}`;
     const subject = encodeURIComponent(subjectText);
-    const body = encodeURIComponent(`${data.get("message")}\n\nFrom: ${data.get("name")}\nEmail: ${data.get("email")}`);
+    const body = encodeURIComponent(
+      `Hello Alif,\n\n${data.get("message")}\n\nSender: ${data.get("name")}\nEmail: ${data.get("email")}`
+    );
     window.location.href = `mailto:${developer.email}?subject=${subject}&body=${body}`;
-    setStatus("Your email app is opening with the message ready.");
+    setStatus("Thank you! Your email application is opening with the message drafted.");
     form.reset();
   };
 
@@ -30,26 +75,35 @@ export default function Contact() {
     <section id="contact" className="relative z-10 px-5 py-24 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          eyebrow="Contact"
+          eyebrow="Get In Touch"
           title="Have a project, role, or collaboration in mind?"
-          text="Send a quick message and I will get back with next steps, timing, and how I can help."
+          text="Send a message directly via email, phone, or WhatsApp. I usually respond within a few hours."
         />
-        <div className="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
+
+        <div className="grid gap-8 lg:grid-cols-[.95fr_1.05fr]">
+          {/* Contact Direct Cards - Requirement 10 */}
           <motion.div
-            className="rounded-3xl border border-white/10 bg-white/[0.055] p-6 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white"
+            className="flex flex-col gap-4"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
           >
-            <div className="mb-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 light:border-slate-200 light:bg-slate-50">
-              <FiMapPin className="mt-1 shrink-0 text-mint" />
+            {/* Location & Availability Note */}
+            <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 light:border-slate-200 light:bg-slate-50">
+              <FiMapPin className="mt-1 shrink-0 text-mint" size={18} />
               <div>
-                <p className="font-bold text-white light:text-slate-950">Based in {developer.location}</p>
-                <p className="mt-1 text-sm text-white/55 light:text-slate-500">Open to remote projects and full stack opportunities.</p>
+                <p className="font-bold text-white light:text-slate-950">
+                  Based in {developer.location}
+                </p>
+                <p className="mt-0.5 text-xs text-white/55 light:text-slate-500">
+                  Available for remote work, contracts, and full stack developer roles worldwide.
+                </p>
               </div>
             </div>
-            <div className="grid gap-3">
-              {contactLinks.map((item) => {
+
+            {/* Direct Cards List */}
+            <div className="grid gap-3 sm:grid-cols-1">
+              {contactChannels.map((item) => {
                 const Icon = item.icon;
                 return (
                   <a
@@ -57,16 +111,29 @@ export default function Contact() {
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:-translate-y-1 hover:border-mint/40 light:border-slate-200 light:bg-slate-50"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.045] p-4 transition hover:-translate-y-0.5 hover:border-mint/40 light:border-slate-200 light:bg-white"
                   >
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-mint/10 text-mint">
-                      <Icon />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-xs font-bold uppercase tracking-[0.2em] text-white/38 light:text-slate-400">
-                        {item.label}
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/5 text-mint ${item.color || "text-mint"} light:bg-slate-100`}>
+                        <Icon size={20} />
                       </span>
-                      <span className="mt-1 block truncate font-semibold text-white light:text-slate-950">{item.value}</span>
+                      <div className="min-w-0">
+                        <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-white/45 light:text-slate-400">
+                          {item.label}
+                          {item.badge && (
+                            <span className="rounded-full bg-[#25D366]/20 px-2 py-0.5 text-[10px] font-bold text-[#25D366]">
+                              {item.badge}
+                            </span>
+                          )}
+                        </span>
+                        <span className="mt-0.5 block truncate font-semibold text-white light:text-slate-950">
+                          {item.value}
+                        </span>
+                      </div>
+                    </div>
+
+                    <span className="hidden sm:inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold text-white/70 transition group-hover:border-mint/50 group-hover:bg-mint group-hover:text-[#050816] light:border-slate-200 light:bg-slate-50 light:text-slate-700">
+                      {item.action}
                     </span>
                   </a>
                 );
@@ -74,36 +141,61 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          <motion.form
-            onSubmit={onSubmit}
+          {/* Interactive Contact Form */}
+          <motion.div
             className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-6 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white sm:p-8"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
+            transition={{ delay: 0.1 }}
           >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Name" name="name" placeholder="Your name" required />
-              <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <Field label="Subject" name="subject" placeholder="Project discussion" />
-            <label className="mt-4 block">
-              <span className="mb-2 block text-sm font-bold text-white/70 light:text-slate-700">Message</span>
-              <textarea
-                name="message"
-                rows="6"
+            <h3 className="text-xl font-black text-white light:text-slate-950">
+              Send a Direct Message
+            </h3>
+            <p className="mt-1 text-xs text-white/55 light:text-slate-500">
+              Fill out the form below and it will draft directly to {developer.email}.
+            </p>
+
+            <form onSubmit={onSubmit} className="mt-6 space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label="Your Name" name="name" placeholder="John Doe" required />
+                <Field label="Your Email" name="email" type="email" placeholder="john@example.com" required />
+              </div>
+
+              <Field
+                label="Subject"
+                name="subject"
+                placeholder="Project Inquiry / Job Opportunity"
                 required
-                placeholder="Tell me about your project..."
-                className="w-full resize-y rounded-2xl border border-white/10 bg-white/[0.055] px-4 py-3 text-white outline-none transition placeholder:text-white/28 focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-950 light:placeholder:text-slate-400"
               />
-            </label>
-            {status && <p className="mt-4 rounded-2xl bg-mint/10 px-4 py-3 text-sm font-semibold text-mint">{status}</p>}
-            <button
-              type="submit"
-              className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-extrabold text-ink transition hover:-translate-y-1 hover:bg-mint sm:w-auto"
-            >
-              Send Message <FiSend />
-            </button>
-          </motion.form>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-[0.16em] text-white/55 light:text-slate-500">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  placeholder="Tell me about your project goals, scope, and timeline..."
+                  className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-900"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white shadow-glow"
+              >
+                Send Message <FiSend />
+              </button>
+
+              {status && (
+                <div className="flex items-center gap-2 rounded-xl bg-mint/10 p-3 text-xs font-semibold text-mint">
+                  <FiCheckCircle /> {status}
+                </div>
+              )}
+            </form>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -112,15 +204,17 @@ export default function Contact() {
 
 function Field({ label, name, type = "text", placeholder, required = false }) {
   return (
-    <label className="mt-4 block first:mt-0">
-      <span className="mb-2 block text-sm font-bold text-white/70 light:text-slate-700">{label}</span>
+    <div>
+      <label className="block text-xs font-bold uppercase tracking-[0.16em] text-white/55 light:text-slate-500">
+        {label}
+      </label>
       <input
-        name={name}
         type={type}
-        placeholder={placeholder}
+        name={name}
         required={required}
-        className="h-12 w-full rounded-2xl border border-white/10 bg-white/[0.055] px-4 text-white outline-none transition placeholder:text-white/28 focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-950 light:placeholder:text-slate-400"
+        placeholder={placeholder}
+        className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-900"
       />
-    </label>
+    </div>
   );
 }

@@ -1,75 +1,274 @@
-import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  FiAlertCircle,
+  FiArrowUpRight,
+  FiCheckCircle,
+  FiCompass,
+  FiExternalLink,
+  FiGithub,
+  FiInfo,
+  FiLayers,
+  FiX,
+} from "react-icons/fi";
 import { projects } from "../data/portfolio.js";
 import SectionHeader from "./SectionHeader.jsx";
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // Prevent background scrolling when details modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
+  // Handle escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <section id="projects" className="relative z-10 px-5 py-24 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          eyebrow="Projects"
-          title="Selected work with modern UI, strong structure, and full stack thinking."
-          text="These project cards are ready to connect to your real repositories and live deployments."
+          eyebrow="Featured Projects"
+          title="Production-ready web applications built with modern engineering."
+          text="Click 'View More / Details' on any project to explore the tech stack, development challenges, and future roadmap."
         />
-        <div className="grid gap-6 lg:grid-cols-3">
+
+        {/* Project Cards Grid - Requirement 9 */}
+        <div className="grid gap-7 lg:grid-cols-3">
           {projects.map((project, index) => (
             <motion.article
-              key={project.title}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.055] shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white"
+              key={project.id}
+              className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] shadow-premium backdrop-blur-xl transition hover:-translate-y-2 hover:border-mint/40 light:border-slate-200 light:bg-white"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.08 }}
-              whileHover={{ y: -8 }}
             >
+              {/* Project Image */}
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={`${project.title} preview`}
-                  className="aspect-[16/11] w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-                <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-xl">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/90 via-transparent to-transparent" />
+                <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-[#050816]/80 px-3 py-1 text-xs font-bold uppercase tracking-wider text-mint backdrop-blur-md">
                   {project.type}
                 </span>
               </div>
-              <div className="p-6">
+
+              {/* Project Info */}
+              <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-2xl font-black text-white light:text-slate-950">{project.title}</h3>
-                <p className="mt-3 min-h-[112px] leading-7 text-white/60 light:text-slate-600">{project.description}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.stack.map((tech) => (
+                <p className="mt-3 flex-1 text-sm leading-6 text-white/65 light:text-slate-600">
+                  {project.shortDescription}
+                </p>
+
+                {/* Tech Stack Badges */}
+                <div className="mt-5 flex flex-wrap gap-1.5">
+                  {project.stack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full border border-mint/20 bg-mint/10 px-3 py-1.5 text-xs font-bold text-mint"
+                      className="rounded-full border border-mint/20 bg-mint/10 px-2.5 py-1 text-xs font-semibold text-mint"
                     >
                       {tech}
                     </span>
                   ))}
+                  {project.stack.length > 4 && (
+                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold text-white/50">
+                      +{project.stack.length - 4} more
+                    </span>
+                  )}
                 </div>
-                <div className="mt-6 flex gap-3">
+
+                {/* Buttons: Requirement 9 asks for 'View More / Details' button */}
+                <div className="mt-6 flex items-center gap-2 pt-4 border-t border-white/10 light:border-slate-100">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full bg-mint px-4 text-xs font-extrabold uppercase tracking-wider text-[#050816] transition hover:bg-white"
+                  >
+                    View Details <FiArrowUpRight size={15} />
+                  </button>
+
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-extrabold text-ink transition hover:bg-mint"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/[0.05] text-white transition hover:border-mint/50 hover:text-mint light:border-slate-200 light:bg-slate-50 light:text-slate-700"
+                    title="Open Live Demo"
                   >
-                    Live Demo <FiExternalLink />
+                    <FiExternalLink size={16} />
                   </a>
+
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.05] text-white transition hover:border-mint/40 hover:text-mint light:border-slate-200 light:bg-slate-50 light:text-slate-700"
-                    aria-label={`${project.title} GitHub`}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/[0.05] text-white transition hover:border-mint/50 hover:text-mint light:border-slate-200 light:bg-slate-50 light:text-slate-700"
+                    title="View Client GitHub Repository"
                   >
-                    <FiGithub />
+                    <FiGithub size={16} />
                   </a>
                 </div>
               </div>
             </motion.article>
           ))}
         </div>
+
+        {/* Detailed Project Modal Dialog - Requirement 9 */}
+        <AnimatePresence>
+          {selectedProject && (
+            <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+              {/* Backdrop */}
+              <motion.div
+                className="fixed inset-0 bg-[#050816]/85 backdrop-blur-md"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedProject(null)}
+              />
+
+              {/* Modal Container */}
+              <motion.div
+                className="relative my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-[#0b1324] p-6 shadow-2xl backdrop-blur-2xl light:border-slate-200 light:bg-white sm:p-8"
+                initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                transition={{ duration: 0.25 }}
+              >
+                {/* Close Button */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white hover:text-black light:border-slate-300 light:bg-slate-100 light:text-slate-800"
+                  aria-label="Close modal"
+                >
+                  <FiX size={20} />
+                </button>
+
+                {/* Modal Header */}
+                <div className="pr-12">
+                  <span className="inline-block rounded-full bg-mint/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-mint">
+                    {selectedProject.type}
+                  </span>
+                  <h3 className="mt-2 text-2xl font-black text-white light:text-slate-950 sm:text-3xl">
+                    {selectedProject.title}
+                  </h3>
+                </div>
+
+                {/* Modal Preview Image */}
+                <div className="mt-5 overflow-hidden rounded-2xl border border-white/10">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                </div>
+
+                {/* 1. Main Technology Stack Used - Requirement 9 */}
+                <div className="mt-6">
+                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint">
+                    <FiLayers /> Main Technology Stack Used
+                  </h4>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {selectedProject.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-mint/30 bg-mint/10 px-3.5 py-1.5 text-xs font-bold text-mint light:bg-mint/15"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. Brief Description & Core Features - Requirement 9 */}
+                <div className="mt-6">
+                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/50 light:text-slate-500">
+                    <FiInfo /> Brief Description
+                  </h4>
+                  <p className="mt-2 text-sm leading-7 text-white/80 light:text-slate-700">
+                    {selectedProject.description}
+                  </p>
+                  <div className="mt-4 grid gap-2">
+                    {selectedProject.features?.map((feature) => (
+                      <div key={feature} className="flex items-start gap-2 text-xs text-white/70 light:text-slate-600">
+                        <FiCheckCircle className="mt-0.5 shrink-0 text-mint" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3. Challenges Faced - Requirement 9 */}
+                <div className="mt-6 rounded-2xl border border-amber/30 bg-amber/5 p-4 light:border-amber/40 light:bg-amber/10">
+                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber">
+                    <FiAlertCircle /> Challenges Faced While Developing
+                  </h4>
+                  <p className="mt-2 text-xs leading-6 text-white/85 light:text-slate-800">
+                    {selectedProject.challenges}
+                  </p>
+                </div>
+
+                {/* 4. Potential Improvements and Future Plans - Requirement 9 */}
+                <div className="mt-5 rounded-2xl border border-mint/30 bg-mint/5 p-4 light:border-mint/30 light:bg-mint/10">
+                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint">
+                    <FiCompass /> Potential Improvements & Future Plans
+                  </h4>
+                  <p className="mt-2 text-xs leading-6 text-white/85 light:text-slate-800">
+                    {selectedProject.futurePlans}
+                  </p>
+                </div>
+
+                {/* 5. Live Project & Client GitHub Repository Links - Requirement 9 */}
+                <div className="mt-7 flex flex-wrap items-center gap-3 pt-4 border-t border-white/10 light:border-slate-200">
+                  <a
+                    href={selectedProject.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white"
+                  >
+                    Open Live Project <FiExternalLink />
+                  </a>
+
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-6 text-sm font-bold text-white transition hover:border-mint/50 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-800"
+                  >
+                    <FiGithub /> GitHub Repository (Client)
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(null)}
+                    className="ml-auto rounded-full px-4 py-2 text-xs font-semibold text-white/50 hover:text-white light:text-slate-500"
+                  >
+                    Close
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
