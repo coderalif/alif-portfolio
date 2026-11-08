@@ -162,6 +162,30 @@ export const experienceList = [
 
 export const projects = [
   {
+    id: "studiospace",
+    title: "StudioSpace - Creative Studio Booking",
+    type: "Full Stack Next.js App",
+    shortDescription:
+      "A modern creative space discovery and booking platform allowing creators to find, explore, and reserve sound stages, photo studios, and music suites.",
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+    stack: ["Next.js", "React.js", "Tailwind CSS", "Node.js", "Lucide Icons", "Vercel"],
+    live: "https://studiospace-pearl.vercel.app/",
+    github: "https://github.com/coderalif",
+    description:
+      "StudioSpace is a dedicated booking and management ecosystem for creative studios. Built with Next.js, it empowers photographers, musicians, and filmmakers to discover distinctive production spaces with real-time category filtering and intuitive reservation flows.",
+    features: [
+      "Dynamic studio discovery across Photo Studios, Sound Stages, Music Suites, and Art Workshops",
+      "Interactive studio detail pages with pricing, amenities, and booking calendar",
+      "Studio listing management dashboard for hosts and creative creators",
+      "Mobile-optimized responsive layouts with dark and light aesthetic modes",
+    ],
+    challenges:
+      "Structuring multi-category dynamic filters and smooth server-rendered routes without layout shift. Solved by leveraging Next.js App Router streaming, caching layers, and responsive UI components.",
+    futurePlans:
+      "Incorporate integrated online payment checkout (Stripe / Local MFS), real-time chat between hosts and creators, and interactive 360-degree virtual studio tours.",
+  },
+  {
     id: "saas-analytics",
     title: "SaaS Analytics Dashboard",
     type: "Full Stack MERN App",

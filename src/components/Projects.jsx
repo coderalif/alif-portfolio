@@ -50,7 +50,7 @@ export default function Projects() {
         />
 
         {/* Project Cards Grid - Requirement 9 */}
-        <div className="grid gap-7 lg:grid-cols-3">
+        <div className="grid gap-7 md:grid-cols-2">
           {projects.map((project, index) => (
             <motion.article
               key={project.id}
