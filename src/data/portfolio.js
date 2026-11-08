@@ -2,8 +2,11 @@
  * ==============================================================================
  * 🌟 PORTFOLIO DATA CONFIGURATION (MD ALIF HOSEN)
  * ==============================================================================
- * এই ফাইলে আপনার পোর্টফোলিওর সমস্ত তথ্য গুছিয়ে রাখা হয়েছে।
- * আপনি যেকোনো সময় এখান থেকে নাম, ইমেইল, প্রজেক্ট, স্কিল পরিবর্তন বা যোগ করতে পারবেন।
+ * ফাইল লোকেশন: src/data/portfolio.js
+ * কাজ:
+ *  - এই ফাইলে আপনার পোর্টফোলিওর সমস্ত তথ্য গুছিয়ে রাখা হয়েছে।
+ *  - আপনি নাম, ইমেইল, প্রজেক্ট, স্কিল পরিবর্তন বা নতুন কিছু যোগ করতে চাইলে
+ *    শুধু এই ফাইলে এডিট করলেই সম্পূর্ণ ওয়েবসাইটে তা অটোমেটিক আপডেট হয়ে যাবে।
  * ==============================================================================
  */
 
@@ -22,50 +25,51 @@ import {
   FiTool,
 } from "react-icons/fi";
 
-// ==========================================
-// ১. ডেভেলপার পরিচিতি ও সোশ্যাল লিংক
-// ==========================================
+// ==============================================================================
+// ১. ডেভেলপার পরিচিতি ও সোশ্যাল লিংক (Developer Information) - Requirement 2, 4, 10
+// ==============================================================================
 export const developer = {
-  name: "Md Alif Hosen",
-  title: "Full Stack Developer",
-  designation: "Full Stack Web Developer (MERN / React & Node.js)",
-  location: "Rangpur, Bangladesh",
-  email: "mdalifhosen876@gmail.com",
-  phone: "+8801795713804",
-  whatsapp: "+8801795713804",
-  whatsappLink: "https://wa.me/8801795713804",
-  portfolio: "https://alif-portfolio-two.vercel.app/",
-  github: "https://github.com/coderalif",
-  linkedin: "https://www.linkedin.com/in/alif26/",
-  facebook: "https://facebook.com/coderalif",
-  resumeUrl: "/resume.pdf", // public/resume.pdf ফাইল থেকে ডাউনলোড হবে
+  name: "Md Alif Hosen",                                      // আপনার পুরো নাম
+  title: "Full Stack Developer",                              // সংক্ষিপ্ত পদবি
+  designation: "Full Stack Web Developer (MERN / React & Node.js)", // বিস্তারিত ডেজিগনেশন
+  location: "Rangpur, Bangladesh",                            // আপনার বর্তমান ঠিকানা
+  email: "mdalifhosen876@gmail.com",                          // যোগাযোগের অফিসিয়াল ইমেইল
+  phone: "+8801795713804",                                    // সরাসরি ফোন নম্বর
+  whatsapp: "+8801795713804",                                 // হোয়াটসঅ্যাপ নম্বর
+  whatsappLink: "https://wa.me/8801795713804",                // সরাসরি হোয়াটসঅ্যাপ চ্যাটের লিংক
+  portfolio: "https://alif-portfolio-two.vercel.app/",        // লাইভ পোর্টফোলিও লিংক
+  github: "https://github.com/coderalif",                     // গিটহাব প্রোফাইল লিংক
+  linkedin: "https://www.linkedin.com/in/alif26/",            // লিঙ্কডইন প্রোফাইল লিংক
+  facebook: "https://facebook.com/coderalif",                 // ফেসবুক প্রোফাইল লিংক
+  resumeUrl: "/resume.pdf",                                   // public/resume.pdf ফাইল থেকে ডাউনলোড হবে
 };
 
-// ==========================================
-// ২. নেভিগেশন বার লিংক (Navbar Menu)
-// ==========================================
+// ==============================================================================
+// ২. নেভিগেশন বার মেনু লিংকসমূহ (Navbar Navigation Links) - Requirement 1
+// ==============================================================================
 export const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "#home" },             // হিরো সেকশনে যাওয়ার লিংক
+  { label: "About", href: "#about" },           // অ্যাবাউট মি সেকশনে যাওয়ার লিংক
+  { label: "Skills", href: "#skills" },         // টেকনিক্যাল স্কিলস সেকশনে যাওয়ার লিংক
+  { label: "Experience", href: "#experience" }, // কাজের অভিজ্ঞতা সেকশনে যাওয়ার লিংক
+  { label: "Projects", href: "#projects" },     // প্রজেক্ট সেকশনে যাওয়ার লিংক
+  { label: "Education", href: "#education" },   // শিক্ষাগত যোগ্যতা সেকশনে যাওয়ার লিংক
+  { label: "Contact", href: "#contact" },       // সরাসরি কন্টাক্ট সেকশনে যাওয়ার লিংক
 ];
 
-// ==========================================
-// ৩. হিরো সেকশনের কাউন্টার সংখ্যা (Hero Stats)
-// ==========================================
+// ==============================================================================
+// ৩. হিরো সেকশনের লাইভ কাউন্টার স্ট্যাটস (Hero Key Stats)
+// ==============================================================================
 export const stats = [
-  { value: 18, suffix: "+", label: "Projects completed" },
-  { value: 10, suffix: "+", label: "Core technologies" },
-  { value: 2, suffix: "+", label: "Years experience" },
+  { value: 18, suffix: "+", label: "Projects completed" }, // সফলভাবে সমাপ্ত প্রজেক্ট সংখ্যা
+  { value: 10, suffix: "+", label: "Core technologies" },   // প্রধান প্রযুক্তিসমূহ
+  { value: 2, suffix: "+", label: "Years experience" },     // কাজের অভিজ্ঞতা
 ];
 
-// ==========================================
-// ৪. টেকনিক্যাল স্কিলস (Technical Skills)
-// ==========================================
+// ==============================================================================
+// ৪. টেকনিক্যাল স্কিলস (Technical Skills by Category) - Requirement 6
+// ==============================================================================
+// প্রতিটি স্কিলের নাম এবং ০ থেকে ১০০ পর্যন্ত আপনার দক্ষতার পারসেন্টেজ
 export const skillGroups = [
   {
     title: "Frontend Development",
@@ -113,9 +117,9 @@ export const skillGroups = [
   },
 ];
 
-// ==========================================
-// ৫. শখ ও আগ্রহ (Hobbies & Interests)
-// ==========================================
+// ==============================================================================
+// ৫. শখ ও কোডিংয়ের বাইরের আগ্রহ (Hobbies & Interests) - Requirement 5
+// ==============================================================================
 export const hobbies = [
   {
     icon: FiActivity,
@@ -139,9 +143,9 @@ export const hobbies = [
   },
 ];
 
-// ==========================================
-// ৬. শিক্ষাগত যোগ্যতা (Educational Qualifications)
-// ==========================================
+// ==============================================================================
+// ৬. শিক্ষাগত যোগ্যতা (Educational Qualifications) - Requirement 7
+// ==============================================================================
 export const educationList = [
   {
     degree: "Diploma in Electronics Technology",
@@ -161,9 +165,9 @@ export const educationList = [
   },
 ];
 
-// ==========================================
-// ৭. কাজের অভিজ্ঞতা (Work / Practical Experience)
-// ==========================================
+// ==============================================================================
+// ৭. কাজের অভিজ্ঞতা (Professional Experience Timeline) - Requirement 8
+// ==============================================================================
 export const experienceList = [
   {
     role: "Full Stack Web Developer (Independent & Projects)",
@@ -189,9 +193,10 @@ export const experienceList = [
   },
 ];
 
-// ==========================================
-// ৮. সেরা প্রজেক্টসমূহ (Featured Projects)
-// ==========================================
+// ==============================================================================
+// ৮. সেরা প্রজেক্টসমূহ (Featured Projects) - Requirement 9
+// ==============================================================================
+// প্রতিটি প্রজেক্টে কার্ড ও "View Details" মোডালের সব প্রয়োজনীয় ডাটা রাখা আছে:
 export const projects = [
   {
     id: "studiospace",
@@ -291,9 +296,9 @@ export const projects = [
   },
 ];
 
-// ==========================================
-// ৯. প্রোগ্রামিং জার্নি (Programming Journey)
-// ==========================================
+// ==============================================================================
+// ৯. প্রোগ্রামিং জার্নি (Programming Journey) - Requirement 5
+// ==============================================================================
 export const journey = [
   {
     icon: FiCode,

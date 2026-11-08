@@ -1,9 +1,24 @@
+/**
+ * ==============================================================================
+ * 🎨 GLOBAL STYLES & TAILWIND CONFIGURATION
+ * ==============================================================================
+ * ফাইল লোকেশন: src/styles/index.css
+ * কাজ:
+ *  ১. গুগল ফন্ট 'Inter' ইমপোর্ট
+ *  ২. ডার্ক ও লাইট মোডের কালার স্কিম এবং স্মুথ স্ক্রলিং প্যাডিং
+ *  ৩. হাইলাইট টেক্সট সিলেকশন কালার (মিন্ট অ্যাকসেন্ট)
+ *  ৪. অ্যাকসেসিবিলিটি (Reduced motion) সাপোর্ট
+ * ==============================================================================
+ */
+
+/* ১. আধুনিক ও ক্লিন টাইপোগ্রাফির জন্য Google Inter Font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ২. ডিফল্ট ডার্ক মোড কালার স্কিম */
 :root {
   color-scheme: dark;
   font-synthesis: none;
@@ -12,6 +27,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ৩. লাইট মোড (সাদা থিম) একটিভ হলে কালার স্কিম ও ব্যাকগ্রাউন্ড */
 :root.light {
   color-scheme: light;
 }
@@ -25,11 +41,13 @@
   box-sizing: border-box;
 }
 
+/* ৪. স্মুথ স্ক্রলিং এবং নেভবারের নিচে হেডারের ৫.৫ রেম ফাঁকা প্যাডিং */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
 }
 
+/* ৫. বডি ডিফল্ট ডার্ক ব্যাকগ্রাউন্ড (#050816) ও ফন্ট সেটিং */
 body {
   margin: 0;
   min-width: 320px;
@@ -51,11 +69,13 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ৬. মাউস দিয়ে টেক্সট সিলেক্ট করলে মিন্ট ব্যাকগ্রাউন্ড দেখাবে */
 ::selection {
   color: #050816;
   background: #2dd4bf;
 }
 
+/* ৭. যেসব ডিভাইসে reduced motion অন আছে তাদের জন্য সেফটি */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
