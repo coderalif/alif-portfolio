@@ -65,20 +65,20 @@ export default function Hero() {
     <section id="home" className="relative z-10 flex min-h-screen items-center px-4 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:px-12">
       <div className="mx-auto grid max-w-7xl items-center gap-10 sm:gap-12 lg:grid-cols-[1.1fr_.9fr]">
         <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-mint backdrop-blur-xl">
-            <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_18px_rgba(45,212,191,.9)]" />
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-mint backdrop-blur-xl light:border-teal-200 light:bg-teal-50 light:text-teal-800 light:shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_18px_rgba(45,212,191,.9)] light:bg-teal-500" />
             Available for Full Stack Opportunities
           </div>
 
           <p className="text-lg font-bold text-white/70 light:text-slate-600">
-            Hello, I am <span className="text-white light:text-slate-950 font-black">{developer.name}</span>
+            Hello, I am <span className="text-white light:text-slate-900 font-black">{developer.name}</span>
           </p>
 
-          <h1 className="mt-2 max-w-4xl text-3xl font-black leading-[1.08] tracking-tight text-white light:text-slate-950 sm:text-5xl lg:text-6xl">
+          <h1 className="mt-2 max-w-4xl text-3xl font-black leading-[1.08] tracking-tight text-white light:text-slate-900 sm:text-5xl lg:text-6xl">
             Building modern web apps with clean code and high performance.
           </h1>
 
-          <div className="mt-4 min-h-9 text-xl font-extrabold text-mint sm:text-2xl">
+          <div className="mt-4 min-h-9 text-xl font-extrabold text-mint sm:text-2xl light:text-teal-600">
             <span>{text}</span>
             <span className="ml-1 inline-block h-6 w-[3px] translate-y-1 bg-amber animate-blink" />
           </div>
@@ -92,7 +92,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] shadow-glow transition hover:-translate-y-0.5 hover:bg-white"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] shadow-glow transition hover:-translate-y-0.5 hover:bg-white light:bg-slate-900 light:text-white light:hover:bg-teal-600 light:shadow-md"
             >
               Hire Me <FiArrowRight />
             </a>
@@ -101,15 +101,15 @@ export default function Hero() {
               href={developer.resumeUrl}
               download="Md_Alif_Hosen_Resume.pdf"
               onClick={handleResumeClick}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-mint/40 bg-white/[0.08] px-6 text-sm font-extrabold text-white backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-mint hover:bg-mint/20 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-900"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-mint/40 bg-white/[0.08] px-6 text-sm font-extrabold text-white backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-mint hover:bg-mint/20 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-800 light:hover:border-teal-500 light:hover:bg-teal-50 light:shadow-sm"
               title="Download Md Alif Hosen's Resume"
             >
-              <FiDownload className="text-mint" /> Download Resume
+              <FiDownload className="text-mint light:text-teal-600" /> Download Resume
             </a>
 
             <a
               href="#projects"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 text-sm font-bold text-white/80 transition hover:-translate-y-0.5 hover:border-white/30 hover:text-white light:border-slate-200 light:bg-slate-100 light:text-slate-700"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 text-sm font-bold text-white/80 transition hover:-translate-y-0.5 hover:border-white/30 hover:text-white light:border-slate-200 light:bg-white light:text-slate-700 light:hover:border-slate-300 light:shadow-sm"
             >
               View Projects
             </a>
@@ -196,14 +196,14 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="absolute -left-4 top-10 hidden rounded-2xl border border-white/12 bg-[#07101f]/90 p-4 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white md:block">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint">Expertise</p>
-            <p className="mt-1 text-sm font-bold text-white light:text-slate-950">MERN Stack Apps</p>
+          <div className="absolute -left-4 top-10 hidden rounded-2xl border border-white/12 bg-[#07101f]/90 p-4 shadow-premium backdrop-blur-xl light:border-slate-200/90 light:bg-white/95 light:shadow-xl md:block">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint light:text-teal-700">Expertise</p>
+            <p className="mt-1 text-sm font-bold text-white light:text-slate-900">MERN Stack Apps</p>
           </div>
 
-          <div className="absolute -right-4 bottom-14 hidden rounded-2xl border border-white/12 bg-[#07101f]/90 p-4 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white md:block">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint">Education</p>
-            <p className="mt-1 text-sm font-bold text-white light:text-slate-950">Kurigram Polytechnic</p>
+          <div className="absolute -right-4 bottom-14 hidden rounded-2xl border border-white/12 bg-[#07101f]/90 p-4 shadow-premium backdrop-blur-xl light:border-slate-200/90 light:bg-white/95 light:shadow-xl md:block">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-mint light:text-teal-700">Education</p>
+            <p className="mt-1 text-sm font-bold text-white light:text-slate-900">Kurigram Polytechnic</p>
           </div>
         </motion.div>
       </div>

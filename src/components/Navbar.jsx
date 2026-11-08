@@ -26,7 +26,7 @@ export default function Navbar({ isLight, onToggleTheme }) {
             A
           </span>
           <span className="min-w-0">
-            <span className="block truncate text-sm font-bold sm:text-base">{developer.name}</span>
+            <span className="block truncate text-sm font-bold sm:text-base text-white light:text-slate-950">{developer.name}</span>
             <span className="block truncate text-xs text-white/50 light:text-slate-500">{developer.title}</span>
           </span>
         </a>
@@ -54,7 +54,7 @@ export default function Navbar({ isLight, onToggleTheme }) {
           </button>
           <a
             href="#contact"
-            className="hidden rounded-full bg-white px-4 py-2 text-sm font-extrabold text-ink transition hover:-translate-y-0.5 hover:bg-mint sm:inline-flex"
+            className="hidden rounded-full bg-white px-4 py-2 text-sm font-extrabold text-ink transition hover:-translate-y-0.5 hover:bg-mint sm:inline-flex light:bg-slate-900 light:text-white light:hover:bg-teal-600 light:shadow-sm"
           >
             Hire Me
           </a>

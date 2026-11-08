@@ -25,16 +25,16 @@ export default function AnimatedCounter({ value, suffix = "", label }) {
   return (
     <motion.div
       ref={ref}
-      className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl light:border-slate-200 light:bg-white"
+      className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl transition hover:-translate-y-1 light:border-slate-200/90 light:bg-white light:shadow-sm hover:light:shadow-md"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <strong className="block text-3xl font-black text-white light:text-slate-950">
+      <strong className="block text-3xl font-black text-white light:text-slate-900">
         {count}
         {suffix}
       </strong>
-      <span className="mt-2 block text-sm font-medium text-white/55 light:text-slate-500">{label}</span>
+      <span className="mt-2 block text-xs sm:text-sm font-semibold text-white/60 light:text-slate-500">{label}</span>
     </motion.div>
   );
 }

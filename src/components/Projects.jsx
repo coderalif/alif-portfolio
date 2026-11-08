@@ -54,7 +54,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.article
               key={project.id}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] shadow-premium backdrop-blur-xl transition hover:-translate-y-2 hover:border-mint/40 light:border-slate-200 light:bg-white"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] shadow-premium backdrop-blur-xl transition hover:-translate-y-2 hover:border-mint/40 light:border-slate-200/90 light:bg-white light:shadow-sm hover:light:shadow-xl hover:light:border-teal-400/50"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -74,8 +74,8 @@ export default function Projects() {
               </div>
 
               {/* Project Info */}
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-2xl font-black text-white light:text-slate-950">{project.title}</h3>
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 className="text-2xl font-black text-white light:text-slate-900">{project.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-6 text-white/65 light:text-slate-600">
                   {project.shortDescription}
                 </p>
@@ -85,13 +85,13 @@ export default function Projects() {
                   {project.stack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full border border-mint/20 bg-mint/10 px-2.5 py-1 text-xs font-semibold text-mint"
+                      className="rounded-full border border-mint/20 bg-mint/10 px-2.5 py-1 text-xs font-semibold text-mint light:border-teal-200 light:bg-teal-50 light:text-teal-700"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.stack.length > 4 && (
-                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold text-white/50">
+                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold text-white/50 light:border-slate-200 light:bg-slate-100 light:text-slate-600">
                       +{project.stack.length - 4} more
                     </span>
                   )}
@@ -102,7 +102,7 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}
-                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full bg-mint px-4 text-xs font-extrabold uppercase tracking-wider text-[#050816] transition hover:bg-white"
+                    className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full bg-mint px-4 text-xs font-extrabold uppercase tracking-wider text-[#050816] transition hover:bg-white light:bg-slate-900 light:text-white light:hover:bg-teal-600"
                   >
                     View Details <FiArrowUpRight size={15} />
                   </button>
@@ -111,7 +111,7 @@ export default function Projects() {
                     href={project.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/[0.05] text-white transition hover:border-mint/50 hover:text-mint light:border-slate-200 light:bg-slate-50 light:text-slate-700"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/[0.05] text-white transition hover:border-mint/50 hover:text-mint light:border-slate-200 light:bg-slate-50 light:text-slate-700 light:hover:border-teal-400 light:hover:text-teal-700"
                     title="Open Live Demo"
                   >
                     <FiExternalLink size={16} />
@@ -121,7 +121,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/[0.05] text-white transition hover:border-mint/50 hover:text-mint light:border-slate-200 light:bg-slate-50 light:text-slate-700"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/[0.05] text-white transition hover:border-mint/50 hover:text-mint light:border-slate-200 light:bg-slate-50 light:text-slate-700 light:hover:border-teal-400 light:hover:text-teal-700"
                     title="View Client GitHub Repository"
                   >
                     <FiGithub size={16} />
@@ -165,16 +165,16 @@ export default function Projects() {
 
                 {/* Modal Header */}
                 <div className="pr-12">
-                  <span className="inline-block rounded-full bg-mint/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-mint">
+                  <span className="inline-block rounded-full bg-mint/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-mint light:bg-teal-50 light:text-teal-700 light:border light:border-teal-200">
                     {selectedProject.type}
                   </span>
-                  <h3 className="mt-2 text-2xl font-black text-white light:text-slate-950 sm:text-3xl">
+                  <h3 className="mt-2 text-2xl font-black text-white light:text-slate-900 sm:text-3xl">
                     {selectedProject.title}
                   </h3>
                 </div>
 
                 {/* Modal Preview Image */}
-                <div className="mt-5 overflow-hidden rounded-2xl border border-white/10">
+                <div className="mt-5 overflow-hidden rounded-2xl border border-white/10 light:border-slate-200">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
@@ -184,14 +184,14 @@ export default function Projects() {
 
                 {/* 1. Main Technology Stack Used - Requirement 9 */}
                 <div className="mt-6">
-                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint">
+                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint light:text-teal-700">
                     <FiLayers /> Main Technology Stack Used
                   </h4>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {selectedProject.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-mint/30 bg-mint/10 px-3.5 py-1.5 text-xs font-bold text-mint light:bg-mint/15"
+                        className="rounded-full border border-mint/30 bg-mint/10 px-3.5 py-1.5 text-xs font-bold text-mint light:border-teal-200 light:bg-teal-50 light:text-teal-800"
                       >
                         {tech}
                       </span>
@@ -210,7 +210,7 @@ export default function Projects() {
                   <div className="mt-4 grid gap-2">
                     {selectedProject.features?.map((feature) => (
                       <div key={feature} className="flex items-start gap-2 text-xs text-white/70 light:text-slate-600">
-                        <FiCheckCircle className="mt-0.5 shrink-0 text-mint" />
+                        <FiCheckCircle className="mt-0.5 shrink-0 text-mint light:text-teal-600" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -218,8 +218,8 @@ export default function Projects() {
                 </div>
 
                 {/* 3. Challenges Faced - Requirement 9 */}
-                <div className="mt-6 rounded-2xl border border-amber/30 bg-amber/5 p-4 light:border-amber/40 light:bg-amber/10">
-                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber">
+                <div className="mt-6 rounded-2xl border border-amber/30 bg-amber/5 p-4 light:border-amber-200 light:bg-amber-50/90">
+                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber light:text-amber-800">
                     <FiAlertCircle /> Challenges Faced While Developing
                   </h4>
                   <p className="mt-2 text-xs leading-6 text-white/85 light:text-slate-800">
@@ -228,8 +228,8 @@ export default function Projects() {
                 </div>
 
                 {/* 4. Potential Improvements and Future Plans - Requirement 9 */}
-                <div className="mt-5 rounded-2xl border border-mint/30 bg-mint/5 p-4 light:border-mint/30 light:bg-mint/10">
-                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint">
+                <div className="mt-5 rounded-2xl border border-mint/30 bg-mint/5 p-4 light:border-teal-200 light:bg-teal-50/90">
+                  <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-mint light:text-teal-800">
                     <FiCompass /> Potential Improvements & Future Plans
                   </h4>
                   <p className="mt-2 text-xs leading-6 text-white/85 light:text-slate-800">
@@ -243,7 +243,7 @@ export default function Projects() {
                     href={selectedProject.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white light:bg-slate-900 light:text-white light:hover:bg-teal-600"
                   >
                     Open Live Project <FiExternalLink />
                   </a>
@@ -252,7 +252,7 @@ export default function Projects() {
                     href={selectedProject.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-6 text-sm font-bold text-white transition hover:border-mint/50 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-800"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-6 text-sm font-bold text-white transition hover:border-mint/50 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-800 light:hover:border-teal-400 light:hover:text-teal-700"
                   >
                     <FiGithub /> GitHub Repository (Client)
                   </a>

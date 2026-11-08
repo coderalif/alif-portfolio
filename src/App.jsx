@@ -65,7 +65,7 @@ export default function App() {
         className="fixed left-0 top-0 z-[80] h-1 bg-gradient-to-r from-mint via-amber to-rose"
         style={{ width: `${progress}%` }}
       />
-      <div className="min-h-screen overflow-x-hidden bg-[#050816] text-white transition-colors duration-500 light:bg-[#f7f8fb] light:text-[#08111f]">
+      <div className="min-h-screen overflow-x-hidden bg-[#050816] text-white transition-colors duration-500 light:bg-[#f8fafc] light:text-slate-900">
         <SiteBackdrop />
         <Navbar isLight={isLight} onToggleTheme={() => setIsLight((value) => !value)} />
         <main>
@@ -124,9 +124,11 @@ function LoadingScreen() {
 function SiteBackdrop() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
-      <div className="absolute inset-0 bg-hero-grid bg-[length:44px_44px] opacity-40 light:opacity-20" />
-      <div className="absolute left-1/2 top-[-22rem] h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-mint/10 blur-3xl" />
-      <div className="absolute bottom-[-24rem] right-[-14rem] h-[42rem] w-[42rem] rounded-full bg-rose/10 blur-3xl" />
+      <div className="absolute inset-0 bg-hero-grid bg-[length:44px_44px] opacity-40 light:hidden" />
+      <div className="absolute inset-0 bg-hero-grid-light bg-[length:44px_44px] hidden light:block opacity-100" />
+      <div className="absolute left-1/2 top-[-20rem] h-[45rem] w-[45rem] -translate-x-1/2 rounded-full bg-mint/10 blur-[120px] light:bg-teal-400/20" />
+      <div className="absolute bottom-[-20rem] right-[-10rem] h-[45rem] w-[45rem] rounded-full bg-rose/10 blur-[130px] light:bg-sky-400/20" />
+      <div className="absolute top-[40%] left-[-15rem] h-[35rem] w-[35rem] rounded-full bg-amber/5 blur-[120px] light:bg-amber-300/15" />
     </div>
   );
 }

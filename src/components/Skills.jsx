@@ -19,7 +19,7 @@ export default function Skills() {
             return (
               <motion.article
                 key={group.title}
-                className="rounded-3xl border border-white/10 bg-[#07101f]/70 p-6 shadow-premium backdrop-blur-xl transition hover:border-mint/30 light:border-slate-200 light:bg-white sm:p-7"
+                className="rounded-3xl border border-white/10 bg-[#07101f]/70 p-5 sm:p-7 shadow-premium backdrop-blur-xl transition hover:border-mint/30 light:border-slate-200/90 light:bg-white light:shadow-sm hover:light:shadow-md hover:light:border-teal-300"
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -27,17 +27,17 @@ export default function Skills() {
               >
                 <div className="mb-6 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-mint/10 text-mint">
+                    <div className="grid h-12 w-12 place-items-center rounded-2xl bg-mint/10 text-mint light:bg-teal-50 light:text-teal-700">
                       <Icon size={24} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-black text-white light:text-slate-950">{group.title}</h3>
+                      <h3 className="text-xl font-black text-white light:text-slate-900">{group.title}</h3>
                       <p className="text-xs text-white/50 light:text-slate-500">
                         {group.skills.length} core competencies
                       </p>
                     </div>
                   </div>
-                  <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold text-mint light:border-slate-200 light:bg-slate-100">
+                  <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold text-mint light:border-teal-200 light:bg-teal-50 light:text-teal-700">
                     Category {String(groupIndex + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -48,9 +48,9 @@ export default function Skills() {
                     <div key={skill.name} className="space-y-1.5">
                       <div className="flex justify-between text-xs font-bold">
                         <span className="text-white/85 light:text-slate-800">{skill.name}</span>
-                        <span className="text-mint">{skill.level}%</span>
+                        <span className="text-mint light:text-teal-700 font-extrabold">{skill.level}%</span>
                       </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-white/10 light:bg-slate-200">
+                      <div className="h-2 sm:h-2.5 w-full overflow-hidden rounded-full bg-white/10 light:bg-slate-100 light:border light:border-slate-200/60">
                         <motion.div
                           className="h-full rounded-full bg-gradient-to-r from-mint via-cyan-400 to-amber"
                           initial={{ width: 0 }}

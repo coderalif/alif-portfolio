@@ -17,16 +17,16 @@ export default function About() {
           {/* Left Column: Core Intro & What I Enjoy */}
           <div className="space-y-6">
             <motion.div
-              className="rounded-3xl border border-white/10 bg-white/[0.055] p-7 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white"
+              className="rounded-3xl border border-white/10 bg-white/[0.055] p-5 sm:p-7 shadow-premium backdrop-blur-xl light:border-slate-200/90 light:bg-white light:shadow-sm"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
             >
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-mint">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-mint light:text-teal-700">
                 <FiSmile /> Who I Am & What I Love
               </div>
 
-              <h3 className="mt-4 text-2xl font-black text-white light:text-slate-950">
+              <h3 className="mt-4 text-2xl font-black text-white light:text-slate-900">
                 Crafting clean web experiences from frontend to database.
               </h3>
 
@@ -37,8 +37,8 @@ export default function About() {
                 with Node.js and MongoDB, I am deeply invested in every layer of the modern web stack.
               </p>
 
-              <div className="mt-6 rounded-2xl border border-mint/20 bg-mint/5 p-4 light:border-mint/30 light:bg-mint/10">
-                <p className="text-xs font-bold uppercase tracking-wider text-mint">The Work I Truly Enjoy</p>
+              <div className="mt-6 rounded-2xl border border-mint/20 bg-mint/5 p-4 light:border-teal-200 light:bg-teal-50/70">
+                <p className="text-xs font-bold uppercase tracking-wider text-mint light:text-teal-800">The Work I Truly Enjoy</p>
                 <p className="mt-2 text-sm leading-6 text-white/80 light:text-slate-700">
                   ⚡ Designing intuitive, responsive user experiences that delight users.
                   <br />
@@ -69,18 +69,18 @@ export default function About() {
                 return (
                   <motion.article
                     key={item.title}
-                    className="rounded-3xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-mint/40 light:border-slate-200 light:bg-white"
+                    className="rounded-3xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-mint/40 light:border-slate-200/90 light:bg-white light:shadow-sm hover:light:border-teal-400/50 hover:light:shadow-md"
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ delay: index * 0.08 }}
                   >
                     <div className="flex gap-4">
-                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-mint/12 text-mint">
+                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-mint/12 text-mint light:bg-teal-50 light:text-teal-700">
                         <Icon size={22} />
                       </div>
                       <div>
-                        <h4 className="text-lg font-black text-white light:text-slate-950">{item.title}</h4>
+                        <h4 className="text-lg font-black text-white light:text-slate-900">{item.title}</h4>
                         <p className="mt-1.5 text-sm leading-6 text-white/65 light:text-slate-600">{item.text}</p>
                       </div>
                     </div>
@@ -106,17 +106,17 @@ export default function About() {
               return (
                 <motion.div
                   key={item.title}
-                  className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-mint/30 light:border-slate-200 light:bg-white"
+                  className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-mint/30 light:border-slate-200/90 light:bg-white light:shadow-sm hover:light:shadow-md hover:light:border-teal-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.07 }}
                 >
-                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-mint/10 text-mint">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-mint/10 text-mint light:bg-teal-50 light:text-teal-700">
                     <Icon size={20} />
                   </div>
                   <h4 className="mt-3 text-base font-bold text-white light:text-slate-900">{item.title}</h4>
-                  <p className="mt-2 text-xs leading-5 text-white/60 light:text-slate-500">{item.description}</p>
+                  <p className="mt-2 text-xs leading-5 text-white/60 light:text-slate-600">{item.description}</p>
                 </motion.div>
               );
             })}

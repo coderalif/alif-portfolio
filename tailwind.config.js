@@ -22,6 +22,8 @@ export default {
       backgroundImage: {
         "hero-grid":
           "linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px)",
+        "hero-grid-light":
+          "linear-gradient(rgba(15,23,42,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.04) 1px, transparent 1px)",
       },
       keyframes: {
         blink: {

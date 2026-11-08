@@ -125,10 +125,10 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
           >
             {/* Location & Availability Note */}
-            <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 light:border-slate-200 light:bg-slate-50">
-              <FiMapPin className="mt-1 shrink-0 text-mint" size={18} />
+            <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 light:border-slate-200/90 light:bg-white light:shadow-sm">
+              <FiMapPin className="mt-1 shrink-0 text-mint light:text-teal-600" size={18} />
               <div>
-                <p className="font-bold text-white light:text-slate-950">
+                <p className="font-bold text-white light:text-slate-900">
                   Based in {developer.location}
                 </p>
                 <p className="mt-0.5 text-xs text-white/55 light:text-slate-500">
@@ -147,10 +147,10 @@ export default function Contact() {
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.045] p-3.5 sm:p-4 transition hover:-translate-y-0.5 hover:border-mint/40 light:border-slate-200 light:bg-white"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.045] p-3.5 sm:p-4 transition hover:-translate-y-0.5 hover:border-mint/40 light:border-slate-200/90 light:bg-white light:shadow-sm hover:light:border-teal-400 hover:light:shadow-md"
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/5 text-mint ${item.color || "text-mint"} light:bg-slate-100`}>
+                      <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/5 text-mint ${item.color || "text-mint"} light:bg-teal-50 light:text-teal-700`}>
                         <Icon size={20} />
                       </span>
                       <div className="min-w-0">
@@ -162,13 +162,13 @@ export default function Contact() {
                             </span>
                           )}
                         </span>
-                        <span className="mt-0.5 block truncate font-semibold text-white light:text-slate-950">
+                        <span className="mt-0.5 block truncate font-semibold text-white light:text-slate-900">
                           {item.value}
                         </span>
                       </div>
                     </div>
 
-                    <span className="hidden sm:inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold text-white/70 transition group-hover:border-mint/50 group-hover:bg-mint group-hover:text-[#050816] light:border-slate-200 light:bg-slate-50 light:text-slate-700">
+                    <span className="hidden sm:inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold text-white/70 transition group-hover:border-mint/50 group-hover:bg-mint group-hover:text-[#050816] light:border-slate-200 light:bg-slate-100 light:text-slate-700">
                       {item.action}
                     </span>
                   </a>
@@ -179,7 +179,7 @@ export default function Contact() {
 
           {/* Interactive Contact Form (Backend Serverless API Powered) */}
           <motion.div
-            className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-5 sm:p-8 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white"
+            className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-5 sm:p-8 shadow-premium backdrop-blur-xl light:border-slate-200/90 light:bg-white light:shadow-lg"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -187,14 +187,14 @@ export default function Contact() {
           >
             <div className="flex items-center justify-between gap-3">
               <div>
-                <h3 className="text-xl font-black text-white light:text-slate-950">
+                <h3 className="text-xl font-black text-white light:text-slate-900">
                   Send a Direct Message
                 </h3>
                 <p className="mt-1 text-xs text-white/55 light:text-slate-500">
                   Delivers directly to {developer.email} via Vercel Serverless API.
                 </p>
               </div>
-              <span className="rounded-full border border-mint/30 bg-mint/10 px-2.5 py-1 text-[11px] font-bold text-mint">
+              <span className="rounded-full border border-mint/30 bg-mint/10 px-2.5 py-1 text-[11px] font-bold text-mint light:border-teal-200 light:bg-teal-50 light:text-teal-700">
                 Backend Live
               </span>
             </div>
@@ -221,14 +221,14 @@ export default function Contact() {
                   required
                   rows={4}
                   placeholder="Tell me about your project goals, scope, and timeline..."
-                  className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-900"
+                  className="mt-2 w-full rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50/80 light:text-slate-900 light:focus:bg-white light:focus:border-teal-500"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white disabled:opacity-60 shadow-glow cursor-pointer"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white disabled:opacity-60 shadow-glow cursor-pointer light:bg-slate-900 light:text-white light:hover:bg-teal-600"
               >
                 {loading ? (
                   <>Sending Message...</>
