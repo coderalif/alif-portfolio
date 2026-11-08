@@ -23,7 +23,7 @@ export const developer = {
   phone: "+8801795713804",
   whatsapp: "+8801795713804",
   whatsappLink: "https://wa.me/8801795713804",
-  portfolio: "https://coderalif.netlify.app/",
+  portfolio: "https://alif-portfolio-two.vercel.app/",
   github: "https://github.com/coderalif",
   linkedin: "https://www.linkedin.com/in/alif26/",
   facebook: "https://facebook.com/coderalif",
