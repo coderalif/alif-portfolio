@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
+  FiAlertCircle,
   FiCheckCircle,
   FiGithub,
   FiLinkedin,
@@ -55,20 +56,55 @@ const contactChannels = [
 ];
 
 export default function Contact() {
-  const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setStatus(null);
+
     const form = event.currentTarget;
-    const data = new FormData(form);
-    const subjectText = data.get("subject") || `Portfolio Inquiry from ${data.get("name")}`;
-    const subject = encodeURIComponent(subjectText);
-    const body = encodeURIComponent(
-      `Hello Alif,\n\n${data.get("message")}\n\nSender: ${data.get("name")}\nEmail: ${data.get("email")}`
-    );
-    window.location.href = `mailto:${developer.email}?subject=${subject}&body=${body}`;
-    setStatus("Thank you! Your email application is opening with the message drafted.");
-    form.reset();
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && data.success) {
+        setStatus({
+          type: "success",
+          message: data.message || "Thank you! Your message has been sent directly to Md Alif Hosen.",
+        });
+        form.reset();
+      } else {
+        throw new Error(data.message || "Server delivery failed.");
+      }
+    } catch (err) {
+      // Graceful fallback to mailto so the user never loses their message!
+      const subject = encodeURIComponent(payload.subject || `Inquiry from ${payload.name}`);
+      const body = encodeURIComponent(
+        `Hello Alif,\n\n${payload.message}\n\nSender: ${payload.name}\nEmail: ${payload.email}`
+      );
+      setStatus({
+        type: "fallback",
+        message: "Automated API delivery encountered an issue. Click below to open in your mail app:",
+        fallbackUrl: `mailto:${developer.email}?subject=${subject}&body=${body}`,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -111,7 +147,7 @@ export default function Contact() {
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.045] p-4 transition hover:-translate-y-0.5 hover:border-mint/40 light:border-slate-200 light:bg-white"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.045] p-3.5 sm:p-4 transition hover:-translate-y-0.5 hover:border-mint/40 light:border-slate-200 light:bg-white"
                   >
                     <div className="flex items-center gap-3.5 min-w-0">
                       <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/5 text-mint ${item.color || "text-mint"} light:bg-slate-100`}>
@@ -141,7 +177,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Interactive Contact Form */}
+          {/* Interactive Contact Form (Backend Serverless API Powered) */}
           <motion.div
             className="rounded-3xl border border-white/10 bg-[#07101f]/75 p-5 sm:p-8 shadow-premium backdrop-blur-xl light:border-slate-200 light:bg-white"
             initial={{ opacity: 0, y: 28 }}
@@ -149,12 +185,19 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-xl font-black text-white light:text-slate-950">
-              Send a Direct Message
-            </h3>
-            <p className="mt-1 text-xs text-white/55 light:text-slate-500">
-              Fill out the form below and it will draft directly to {developer.email}.
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <h3 className="text-xl font-black text-white light:text-slate-950">
+                  Send a Direct Message
+                </h3>
+                <p className="mt-1 text-xs text-white/55 light:text-slate-500">
+                  Delivers directly to {developer.email} via Vercel Serverless API.
+                </p>
+              </div>
+              <span className="rounded-full border border-mint/30 bg-mint/10 px-2.5 py-1 text-[11px] font-bold text-mint">
+                Backend Live
+              </span>
+            </div>
 
             <form onSubmit={onSubmit} className="mt-6 space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -184,14 +227,37 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white shadow-glow"
+                disabled={loading}
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white disabled:opacity-60 shadow-glow cursor-pointer"
               >
-                Send Message <FiSend />
+                {loading ? (
+                  <>Sending Message...</>
+                ) : (
+                  <>Send Message <FiSend /></>
+                )}
               </button>
 
               {status && (
-                <div className="flex items-center gap-2 rounded-xl bg-mint/10 p-3 text-xs font-semibold text-mint">
-                  <FiCheckCircle /> {status}
+                <div
+                  className={`mt-4 rounded-2xl border p-4 text-xs leading-6 ${
+                    status.type === "success"
+                      ? "border-mint/30 bg-mint/10 text-mint"
+                      : "border-amber/30 bg-amber/10 text-amber"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 font-bold text-sm">
+                    {status.type === "success" ? <FiCheckCircle /> : <FiAlertCircle />}
+                    <span>{status.type === "success" ? "Message Delivered!" : "Notice"}</span>
+                  </div>
+                  <p className="mt-1">{status.message}</p>
+                  {status.fallbackUrl && (
+                    <a
+                      href={status.fallbackUrl}
+                      className="mt-2 inline-flex items-center gap-2 rounded-lg bg-amber px-3 py-1.5 font-bold text-[#050816] transition hover:bg-white"
+                    >
+                      Open Email App <FiSend size={12} />
+                    </a>
+                  )}
                 </div>
               )}
             </form>
@@ -213,7 +279,7 @@ function Field({ label, name, type = "text", placeholder, required = false }) {
         name={name}
         required={required}
         placeholder={placeholder}
-        className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-900"
+        className="mt-2 h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-900"
       />
     </div>
   );
