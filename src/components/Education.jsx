@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FiAward, FiBookOpen } from "react-icons/fi";
+import { FiAward, FiBookOpen, FiCalendar } from "react-icons/fi";
 import SectionHeader from "./SectionHeader.jsx";
 
 export default function Education() {
@@ -8,8 +8,8 @@ export default function Education() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Education"
-          title="Technical foundation from Rangpur Polytechnic Institute."
-          text="Formal computer technology study supports my practical full stack development work."
+          title="Technical foundation from Kurigram Polytechnic Institute."
+          text="Diploma in Electronics Technology alongside modern full stack web development."
           align="center"
         />
         <motion.div
@@ -18,16 +18,23 @@ export default function Education() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
         >
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-            <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-mint/20 to-amber/20 text-mint">
-              <FiAward size={28} />
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+              <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-mint/20 to-amber/20 text-mint shrink-0">
+                <FiAward size={28} />
+              </div>
+              <div>
+                <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.22em] text-mint">
+                  <FiBookOpen /> Diploma in Engineering
+                </p>
+                <h3 className="mt-2 text-2xl font-black text-white light:text-slate-950">Diploma in Electronics Technology</h3>
+                <p className="mt-2 text-white/60 light:text-slate-600 font-medium">Kurigram Polytechnic Institute</p>
+              </div>
             </div>
-            <div>
-              <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.22em] text-mint">
-                <FiBookOpen /> Diploma
-              </p>
-              <h3 className="mt-2 text-2xl font-black text-white light:text-slate-950">Diploma in Computer Technology</h3>
-              <p className="mt-2 text-white/60 light:text-slate-600">Rangpur Polytechnic Institute</p>
+            <div className="sm:self-center">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-mint/30 bg-mint/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-mint">
+                <FiCalendar size={13} /> Present (Running)
+              </span>
             </div>
           </div>
         </motion.div>
