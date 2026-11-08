@@ -65,7 +65,7 @@ export default function App() {
         className="fixed left-0 top-0 z-[80] h-1 bg-gradient-to-r from-mint via-amber to-rose"
         style={{ width: `${progress}%` }}
       />
-      <div className="min-h-screen overflow-hidden bg-[#050816] text-white transition-colors duration-500 light:bg-[#f7f8fb] light:text-[#08111f]">
+      <div className="min-h-screen overflow-x-hidden bg-[#050816] text-white transition-colors duration-500 light:bg-[#f7f8fb] light:text-[#08111f]">
         <SiteBackdrop />
         <Navbar isLight={isLight} onToggleTheme={() => setIsLight((value) => !value)} />
         <main>

@@ -74,7 +74,7 @@ export default function Hero() {
             Hello, I am <span className="text-white light:text-slate-950 font-black">{developer.name}</span>
           </p>
 
-          <h1 className="mt-2 max-w-4xl text-4xl font-black leading-[1.05] tracking-tight text-white light:text-slate-950 sm:text-6xl lg:text-6xl">
+          <h1 className="mt-2 max-w-4xl text-3xl font-black leading-[1.08] tracking-tight text-white light:text-slate-950 sm:text-5xl lg:text-6xl">
             Building modern web apps with clean code and high performance.
           </h1>
 
@@ -88,11 +88,11 @@ export default function Hero() {
             responsive React frontends, robust Node.js REST APIs, and scalable MongoDB/MySQL backends.
           </p>
 
-          {/* CTA Buttons - Including Requirement 3: Resume Download Button */}
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          {/* CTA Buttons - Fully responsive & accessible across all mobile devices */}
+          <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] shadow-glow transition hover:-translate-y-0.5 hover:bg-white"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] shadow-glow transition hover:-translate-y-0.5 hover:bg-white"
             >
               Hire Me <FiArrowRight />
             </a>
@@ -101,7 +101,7 @@ export default function Hero() {
               href={developer.resumeUrl}
               download="Md_Alif_Hosen_Resume.pdf"
               onClick={handleResumeClick}
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-mint/40 bg-white/[0.08] px-6 text-sm font-extrabold text-white backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-mint hover:bg-mint/20 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-900"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-mint/40 bg-white/[0.08] px-6 text-sm font-extrabold text-white backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-mint hover:bg-mint/20 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-900"
               title="Download Md Alif Hosen's Resume"
             >
               <FiDownload className="text-mint" /> Download Resume
@@ -109,7 +109,7 @@ export default function Hero() {
 
             <a
               href="#projects"
-              className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 text-sm font-bold text-white/80 transition hover:-translate-y-0.5 hover:border-white/30 hover:text-white light:border-slate-200 light:bg-slate-100 light:text-slate-700"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 text-sm font-bold text-white/80 transition hover:-translate-y-0.5 hover:border-white/30 hover:text-white light:border-slate-200 light:bg-slate-100 light:text-slate-700"
             >
               View Projects
             </a>
@@ -167,7 +167,7 @@ export default function Hero() {
 
         {/* Professional Portrait Card - Requirement 2 */}
         <motion.div
-          className="relative mx-auto w-full max-w-[480px]"
+          className="relative mx-auto w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px]"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.75, delay: 0.15 }}

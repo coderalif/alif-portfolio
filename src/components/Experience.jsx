@@ -13,18 +13,18 @@ export default function Experience() {
           text="Applying clean coding principles across independent client work, open source projects, and structured web engineering."
         />
 
-        <div className="relative border-l border-white/10 pl-6 sm:pl-8 ml-2 sm:ml-4 space-y-8 light:border-slate-200">
+        <div className="relative border-l-2 border-mint/20 pl-6 sm:pl-8 ml-4 sm:ml-6 space-y-8 light:border-slate-200">
           {experienceList.map((item, index) => (
             <motion.div
               key={item.role}
-              className="relative rounded-3xl border border-white/10 bg-white/[0.045] p-6 shadow-premium backdrop-blur-xl transition hover:border-mint/30 light:border-slate-200 light:bg-white sm:p-7"
+              className="relative rounded-3xl border border-white/10 bg-white/[0.045] p-5 sm:p-7 shadow-premium backdrop-blur-xl transition hover:border-mint/30 light:border-slate-200 light:bg-white"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.1 }}
             >
               {/* Timeline marker */}
-              <div className="absolute -left-[35px] sm:-left-[43px] top-6 grid h-8 w-8 place-items-center rounded-full border border-mint bg-[#050816] text-mint shadow-glow">
+              <div className="absolute -left-[41px] sm:-left-[49px] top-6 grid h-8 w-8 place-items-center rounded-full border border-mint bg-[#050816] text-mint shadow-glow">
                 <FiBriefcase size={14} />
               </div>
 

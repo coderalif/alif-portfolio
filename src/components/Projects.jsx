@@ -135,7 +135,7 @@ export default function Projects() {
         {/* Detailed Project Modal Dialog - Requirement 9 */}
         <AnimatePresence>
           {selectedProject && (
-            <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            <div className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
               {/* Backdrop */}
               <motion.div
                 className="fixed inset-0 bg-[#050816]/85 backdrop-blur-md"
@@ -147,7 +147,7 @@ export default function Projects() {
 
               {/* Modal Container */}
               <motion.div
-                className="relative my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-[#0b1324] p-6 shadow-2xl backdrop-blur-2xl light:border-slate-200 light:bg-white sm:p-8"
+                className="relative my-6 max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-[#0b1324] p-5 sm:p-8 shadow-2xl backdrop-blur-2xl light:border-slate-200 light:bg-white"
                 initial={{ opacity: 0, scale: 0.92, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: 20 }}
@@ -238,12 +238,12 @@ export default function Projects() {
                 </div>
 
                 {/* 5. Live Project & Client GitHub Repository Links - Requirement 9 */}
-                <div className="mt-7 flex flex-wrap items-center gap-3 pt-4 border-t border-white/10 light:border-slate-200">
+                <div className="mt-7 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-4 border-t border-white/10 light:border-slate-200">
                   <a
                     href={selectedProject.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-mint px-6 text-sm font-extrabold text-[#050816] transition hover:bg-white"
                   >
                     Open Live Project <FiExternalLink />
                   </a>
@@ -252,7 +252,7 @@ export default function Projects() {
                     href={selectedProject.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-6 text-sm font-bold text-white transition hover:border-mint/50 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-800"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-6 text-sm font-bold text-white transition hover:border-mint/50 hover:text-mint light:border-slate-300 light:bg-white light:text-slate-800"
                   >
                     <FiGithub /> GitHub Repository (Client)
                   </a>
@@ -260,7 +260,7 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={() => setSelectedProject(null)}
-                    className="ml-auto rounded-full px-4 py-2 text-xs font-semibold text-white/50 hover:text-white light:text-slate-500"
+                    className="py-2.5 text-center text-xs font-semibold text-white/50 hover:text-white sm:ml-auto light:text-slate-500"
                   >
                     Close
                   </button>
