@@ -36,4 +36,4 @@ Modern, responsive personal developer portfolio website for **Md Alif Hosen** â€
    ```
 
 ## ğŸŒ Live Preview
-- **Live Demo:** [samim01-portfolio.netlify.app](https://samim01-portfolio.netlify.app/)
+- **Live Demo:** [mdalifhosen.netlify.app](https://mdalifhosen.netlify.app/)

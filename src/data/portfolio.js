@@ -14,7 +14,7 @@ export const developer = {
   location: "Rangpur, Bangladesh",
   email: "mdsamimhossen827@gmail.com",
   phone: "+8801743282144",
-  portfolio: "https://samim01-portfolio.netlify.app/",
+  portfolio: "https://mdalifhosen.netlify.app/",
   github: "https://github.com/mdsamimprogramer",
   linkedin: "https://www.linkedin.com/in/samim01/",
 };
