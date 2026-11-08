@@ -34,7 +34,15 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [showTop, setShowTop] = useState(false);
-  const [isLight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(() => {
+    try {
+      const saved = localStorage.getItem("theme");
+      if (saved) return saved === "light";
+    } catch {
+      // Fallback
+    }
+    return false;
+  });
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 850);
@@ -43,6 +51,11 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle("light", isLight);
+    try {
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    } catch {
+      // Fallback
+    }
   }, [isLight]);
 
   useEffect(() => {

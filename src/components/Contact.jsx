@@ -241,8 +241,8 @@ export default function Contact() {
                 <div
                   className={`mt-4 rounded-2xl border p-4 text-xs leading-6 ${
                     status.type === "success"
-                      ? "border-mint/30 bg-mint/10 text-mint"
-                      : "border-amber/30 bg-amber/10 text-amber"
+                      ? "border-mint/30 bg-mint/10 text-mint light:border-teal-300 light:bg-teal-50 light:text-teal-900"
+                      : "border-amber/30 bg-amber/10 text-amber light:border-amber-300 light:bg-amber-50 light:text-amber-900"
                   }`}
                 >
                   <div className="flex items-center gap-2 font-bold text-sm">
@@ -279,7 +279,7 @@ function Field({ label, name, type = "text", placeholder, required = false }) {
         name={name}
         required={required}
         placeholder={placeholder}
-        className="mt-2 h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-900"
+        className="mt-2 h-12 w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 text-sm text-white outline-none transition focus:border-mint/60 light:border-slate-200 light:bg-slate-50 light:text-slate-900 light:focus:bg-white light:focus:border-teal-500"
       />
     </div>
   );

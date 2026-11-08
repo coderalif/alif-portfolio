@@ -260,7 +260,7 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={() => setSelectedProject(null)}
-                    className="py-2.5 text-center text-xs font-semibold text-white/50 hover:text-white sm:ml-auto light:text-slate-500"
+                    className="py-2.5 text-center text-xs font-semibold text-white/50 hover:text-white sm:ml-auto light:text-slate-500 light:hover:text-slate-900"
                   >
                     Close
                   </button>

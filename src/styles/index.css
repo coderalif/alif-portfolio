@@ -16,6 +16,11 @@
   color-scheme: light;
 }
 
+:root.light body {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
 * {
   box-sizing: border-box;
 }
