@@ -42,6 +42,7 @@ export const developer = {
   linkedin: "https://www.linkedin.com/in/alif26/",            // লিঙ্কডইন প্রোফাইল লিংক
   facebook: "https://facebook.com/coderalif",                 // ফেসবুক প্রোফাইল লিংক
   resumeUrl: "/resume.pdf",                                   // public/resume.pdf ফাইল থেকে ডাউনলোড হবে
+  resumeDriveUrl: "https://drive.google.com/file/d/1m0Q0fDVdyMM7XHX9P841B_MtVREnwlK_/view?usp=sharing", // গুগল ড্রাইভ রিজিউমি ভিউ লিংক
 };
 
 // ==============================================================================

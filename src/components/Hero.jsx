@@ -21,7 +21,7 @@ import {
   FiLinkedin,
   FiMapPin,
 } from "react-icons/fi";
-import { FaFacebook, FaWhatsapp } from "react-icons/fa6";
+import { FaFacebook, FaGoogleDrive, FaWhatsapp } from "react-icons/fa6";
 import AnimatedCounter from "./AnimatedCounter.jsx";
 import { developer, stats } from "../data/portfolio.js";
 
@@ -111,6 +111,17 @@ export default function Hero() {
               title="Download Md Alif Hosen's Resume"
             >
               <FiDownload className="text-mint light:text-teal-600" /> Download Resume
+            </a>
+
+            {/* গুগল ড্রাইভ ভিউ বাটন (Google Drive Resume View) */}
+            <a
+              href={developer.resumeDriveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-5 text-sm font-extrabold text-white backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-amber hover:bg-amber/20 hover:text-amber light:border-amber-300 light:bg-amber-50 light:text-amber-900 light:hover:border-amber-500 light:hover:bg-amber-100 light:shadow-sm"
+              title="View Md Alif Hosen's Resume on Google Drive"
+            >
+              <FaGoogleDrive className="text-amber light:text-amber-600" /> Google Drive
             </a>
 
             <a

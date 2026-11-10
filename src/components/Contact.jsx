@@ -23,7 +23,7 @@ import {
   FiPhone,
   FiSend,
 } from "react-icons/fi";
-import { FaWhatsapp } from "react-icons/fa6";
+import { FaGoogleDrive, FaWhatsapp } from "react-icons/fa6";
 import { developer } from "../data/portfolio.js";
 import SectionHeader from "./SectionHeader.jsx";
 
@@ -65,6 +65,15 @@ const contactChannels = [
     value: "alif26",
     href: developer.linkedin,
     action: "Connect",
+  },
+  {
+    icon: FaGoogleDrive,
+    label: "Official Resume",
+    value: "Google Drive PDF",
+    href: developer.resumeDriveUrl,
+    action: "View on Drive",
+    badge: "Verified CV",
+    color: "text-amber-400",
   },
 ];
 
